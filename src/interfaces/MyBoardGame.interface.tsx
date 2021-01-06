@@ -1,5 +1,4 @@
-export default interface MyBoardGame {
-  boardGames: { 
+export interface MyBoardGame { 
     id: string,
     name: string,
     min_players: number,
@@ -16,5 +15,5 @@ export default interface MyBoardGame {
     rank: number,
     trending_rank: number,
     rules_url: string
-   }[];
-};
+   }
+
