@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
 import './SearchDisplay.scss';
 
-interface IProps {}
+type MyProps = {
+  searchData: string;
+};
 
-interface IState {
-  playOrPause?: string;
-}
-// const SearchDisplay = ({searchData}: SearchCriteria) => {
+type MyState = {
+  boardGames: { name: string }[];
+};
 
-//   componentDidMount() {
-//     API.fetchData(searchData)
-//   }
-
-class SearchDisplay extends Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    this.state = {
-      // playOrPause: "Play",
-    };
-  }
+class SearchDisplay extends Component<MyProps, MyState> {
+  // constructor(props: IProps) {
+  //   super(props);
+  state: MyState = {
+    boardGames: [{ name: 'thing' }],
+  };
 
   render() {
-    return <h1>{this.props.searchData}</h1>;
+    return (
+      <h1>
+        {this.props.searchData}
+        {this.state.boardGames[0].name}
+      </h1>
+    );
   }
 }
 
