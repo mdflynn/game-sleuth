@@ -4,7 +4,7 @@ import MyBoardGame from "../interfaces/MyBoardGame.interface";
 import { fetchSearchResults } from "../APIcalls";
 
 interface MyProps {
-  searchData: string;
+  searchCriteria: string;
 }
 
 class SearchDisplay extends Component<MyProps, MyBoardGame> {
@@ -45,7 +45,7 @@ class SearchDisplay extends Component<MyProps, MyBoardGame> {
   render() {
     return (
       <h1>
-        {this.props.searchData}
+        {this.props.searchCriteria}
         {this.state.boardGames[0] && <h1>{this.state.boardGames[0].name}</h1>}
       </h1>
     );

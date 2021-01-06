@@ -1,33 +1,47 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.scss';
 import { setConstantValue } from 'typescript';
 import SearchDisplay from '../SearchDisplay/SearchDisplay';
 import SearchForm from '../SearchForm/SearchForm';
+import MainPage from '../MainPage/MainPage'
 import { receiveMessageOnPort } from 'worker_threads';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
-const App = () => {
-  return (
-    <main className="App">
-      {/* <div className="logo">
-        <Logo />
-      </div> */}
-      <div className="search-form-link">
-        <SearchForm />
-      </div>
-      <div className="search-trending">
-        <SearchDisplay searchData={'trending'} />
-      </div>
-      <div className="search-top">
-        <SearchDisplay searchData={'top'} />
-      </div>
-      <div className="search-two-player">
-        <SearchDisplay searchData={'two-player'} />
-      </div>
-      <div className="search-four-player">
-        <SearchDisplay searchData={'four-player'} />
-      </div>
-    </main>
-  );
+interface SearchState {
+  searchCriteria: string,
+}
+
+
+class App extends Component<any, SearchState> {
+  state: SearchState = {
+      searchCriteria: ''
+    }
+
+// check what type event should be 
+  updateSearchCriteria = (event:any) => {
+    this.setState({ searchCriteria: event.target.value })
+  }  
+
+  render () {
+    return (
+      <main className="App">
+
+        <Router>
+        <Switch>
+
+        <Route exact path="/" render={() => {
+          return <MainPage updateSearchCriteria={this.updateSearchCriteria} />
+        }} />
+        <Route  path="/:criteria" render={() => {
+            return <SearchDisplay searchCriteria={this.state.searchCriteria} />
+        }} />
+
+        </Switch>
+        </Router>
+      
+      </main>
+    )
+  }
 };
 
 export default App;
