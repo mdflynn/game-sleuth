@@ -16,12 +16,14 @@ class SearchForm extends Component<any, FormState> {
     minAge: 14,
   };
 
-  handleChange = (event: any) => {
-    console.log(event);
-  };
+  handleChange(event: any) {
+    const { name, value } = event.target;    
+    this.setState({...this.state, [name]:value});
+  }
 
-  getSliderValue(event: any) {
-    this.setState({ numPlayers: event.target.value });
+  handleSubmit = () => {
+    //fetch data here and pass down method to update searchCriteria in App
+    //which should render SearchDisplay
   }
 
   render() {
@@ -36,7 +38,8 @@ class SearchForm extends Component<any, FormState> {
               value={this.state.numPlayers}
               min="2"
               max="8"
-              onChange={(event: any) => this.getSliderValue(event)}
+              name="numPlayers"
+              onChange={(event: any) => this.handleChange(event)}
             />
             <p>Number of players</p>
           </label>
@@ -49,7 +52,8 @@ class SearchForm extends Component<any, FormState> {
               value={this.state.playtime}
               min="10"
               max="90"
-              onChange={(event: any) => this.getSliderValue(event)}
+              name="playtime"
+              onChange={(event: any) => this.handleChange(event)}
             />
             <p>Playtime</p>
           </label>
@@ -62,7 +66,8 @@ class SearchForm extends Component<any, FormState> {
               value={this.state.price}
               min="2"
               max="100"
-              onChange={(event: any) => this.getSliderValue(event)}
+              name="price"
+              onChange={(event: any) => this.handleChange(event)}
             />
             <p>Price</p>
           </label>
@@ -75,7 +80,8 @@ class SearchForm extends Component<any, FormState> {
               value={this.state.minAge}
               min="8"
               max="18"
-              onChange={(event: any) => this.getSliderValue(event)}
+              name="minAge"
+              onChange={(event: any) => this.handleChange(event)}
             />
             <p>Minimum Age</p>
           </label>
