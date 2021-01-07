@@ -82,11 +82,6 @@ class SearchDisplay extends Component<MyProps, AllGames> {
           {this.state.boardGames.map((game) => this.createGamePreview(game))}
         </div>
       </section>
-      // <h1>
-      //   {this.state.boardGames.length > 0 && (
-      //     <h1>{this.state.boardGames[0].name}</h1>
-      //   )}
-      // </h1>
     );
   }
 }

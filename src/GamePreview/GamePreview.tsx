@@ -3,13 +3,24 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { PreviewInfo } from '../interfaces/MyBoardGame.interface';
 
-const GamePreview = (props: PreviewInfo) => {
+const GamePreview = ({
+  id,
+  name,
+  min_players,
+  max_players,
+  image_url,
+  rank,
+}: PreviewInfo) => {
   return (
-    <Link to={`/game/${props.id}`}>
+    <Link to={`/game/${id}`}>
       <section className="game-preview">
-        <img className="preview-image" src={props.image_url} alt={props.name} />
+        <img className="preview-image" src={image_url} alt={name} />
         <div className="preview-info">
-          <h3 className="game-title">{props.name}</h3>
+          <h3 className="game-title">{name}</h3>
+          <p>
+            {min_players}-{max_players} Players
+          </p>
+          <p>Sleuth Ranking: {rank}</p>
         </div>
       </section>
     </Link>
