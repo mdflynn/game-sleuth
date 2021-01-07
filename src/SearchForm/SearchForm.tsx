@@ -21,14 +21,15 @@ class SearchForm extends Component<any, FormState> {
     this.setState({...this.state, [name]:value});
   }
 
-  handleSubmit = () => {
+  handleSubmit = (event:any) => {
+    event.preventDefault();
     //fetch data here and pass down method to update searchCriteria in App
     //which should render SearchDisplay
   }
 
   render() {
     return (
-      <form>
+      <form onSubmit={(event) => this.handleSubmit(event)}>
         <h1>Search for Games!</h1>
         <div className="slidecontainer">
           <label>
@@ -86,6 +87,7 @@ class SearchForm extends Component<any, FormState> {
             <p>Minimum Age</p>
           </label>
         </div>
+        <button>Search</button>
       </form>
     );
   }
