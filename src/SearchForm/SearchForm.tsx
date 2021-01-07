@@ -1,96 +1,97 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./SearchForm.scss";
+import { Slider, Typography } from "@material-ui/core";
 
-interface FormState {
-  numPlayers: number;
-  playtime: number;
-  price: number;
-  minAge: number;
-}
 
-class SearchForm extends Component<any, FormState> {
-  state: FormState = {
-    numPlayers: 4,
-    playtime: 45,
-    price: 15,
-    minAge: 14,
-  };
+const SearchForm:React.FC = () => {
+  const [numPlayers, setNumPlayers] = useState([4, 6]);
+  const [playtime, setPlaytime] = useState([15, 45]);
+  const [price, setPrice] = useState([15, 30]);
+  const [minAge, setMinAge] = useState(14);
 
-  handleChange(event: any) {
-    const { name, value } = event.target;    
-    this.setState({...this.state, [name]:value});
-  }
-
-  handleSubmit = (event:any) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     //fetch data here and pass down method to update searchCriteria in App
     //which should render SearchDisplay
-  }
+  };
 
-  render() {
-    return (
-      <form onSubmit={(event) => this.handleSubmit(event)}>
-        <h1>Search for Games!</h1>
-        <div className="slidecontainer">
-          <label>
-            <input
-              id="width"
-              type="range"
-              value={this.state.numPlayers}
-              min="2"
-              max="8"
-              name="numPlayers"
-              onChange={(event: any) => this.handleChange(event)}
-            />
-            <p>Number of players</p>
-          </label>
-        </div>
-        <div className="slidecontainer">
-          <label>
-            <input
-              id="width"
-              type="range"
-              value={this.state.playtime}
-              min="10"
-              max="90"
-              name="playtime"
-              onChange={(event: any) => this.handleChange(event)}
-            />
-            <p>Playtime</p>
-          </label>
-        </div>
-        <div className="slidecontainer">
-          <label>
-            <input
-              id="width"
-              type="range"
-              value={this.state.price}
-              min="2"
-              max="100"
-              name="price"
-              onChange={(event: any) => this.handleChange(event)}
-            />
-            <p>Price</p>
-          </label>
-        </div>
-        <div className="slidecontainer">
-          <label>
-            <input
-              id="width"
-              type="range"
-              value={this.state.minAge}
-              min="8"
-              max="18"
-              name="minAge"
-              onChange={(event: any) => this.handleChange(event)}
-            />
-            <p>Minimum Age</p>
-          </label>
-        </div>
-        <button>Search</button>
-      </form>
-    );
-  }
-}
+  const handlePlayersChange = (event: any, newValue: any) => {
+    setNumPlayers(newValue);
+  };
+  const handlePlaytimeChange = (event: any, newValue: any) => {
+    setPlaytime(newValue);
+  };
+  const handlePriceChange = (event: any, newValue: any) => {
+    setPrice(newValue);
+  };
+  const handleAgeChange = (event: any, newValue: any) => {
+    setMinAge(newValue);
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <button className="home-button">Return Home</button>
+      <h1>Search for Games!</h1>
+      <div className="slidecontainer">
+        <Typography id="range-slider" gutterBottom>
+          Number of Players
+        </Typography>
+        <Slider
+          className="slider"
+          min={1}
+          max={8}
+          name={"test"}
+          value={numPlayers}
+          onChange={handlePlayersChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+        />
+      </div>
+      <div className="slidecontainer">
+        <Typography id="range-slider" gutterBottom>
+          Playtime
+        </Typography>
+        <Slider
+          className="slider"
+          min={0}
+          max={240}
+          value={playtime}
+          onChange={handlePlaytimeChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+        />
+      </div>
+      <div className="slidecontainer">
+        <Typography id="range-slider" gutterBottom>
+          Price
+        </Typography>
+        <Slider
+          className="slider"
+          min={5}
+          max={100}
+          value={price}
+          onChange={handlePriceChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+        />
+      </div>
+      <div className="slidecontainer">
+        <Typography id="range-slider" gutterBottom>
+          Minimum Age
+        </Typography>
+        <Slider
+          className="slider"
+          min={8}
+          max={18}
+          value={minAge}
+          onChange={handleAgeChange}
+          valueLabelDisplay="auto"
+          aria-labelledby="range-slider"
+        />
+      </div>
+      <button>Search</button>
+    </form>
+  );
+};
 
 export default SearchForm;

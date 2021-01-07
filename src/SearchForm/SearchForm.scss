@@ -3,14 +3,20 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+.home-button {
+  position: absolute;
+  right: 10%;
+  top: 10%;
 }
 
 .slidecontainer {
-    width: 50%; /* Width of the outside container */
+    width: 50%;
     
   }
-  
-  /* The slider itself */
+
   .slider {
     -webkit-appearance: none;
     width: 100%;
