@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchDisplay.scss';
 import { MyBoardGame, PreviewInfo } from '../interfaces/MyBoardGame.interface';
 import { fetchSearchResults } from '../APIcalls';
@@ -8,35 +8,45 @@ interface MyProps {
   searchCriteria: string;
 }
 
-interface AllGames {
-  boardGames: MyBoardGame[];
-}
+// interface AllGames {
+//   boardGames: MyBoardGame[];
+// }
 
-class SearchDisplay extends Component<MyProps, AllGames> {
-  state: AllGames = {
-    boardGames: [],
-  };
+const SearchDisplay = (props: MyProps) => {
+  const [AllGames, setAllGames] = useState([]);
 
-  componentDidMount() {
-    let searchCriteria = this.handleSearchCriteria();
+  // state: AllGames = {
+  //   boardGames: [],
+  // };
+
+  useEffect(() => {
+    let searchCriteria = handleSearchCriteria();
     fetchSearchResults(searchCriteria).then((data) => {
-      this.setState({ boardGames: this.cleanData(data.games) });
+      const cleanedData: MyBoardGame[] = cleanData(data.games);
+      setAllGames(cleanedData as any);
     });
-  }
+  });
 
-  handleSearchCriteria() {
-    switch (this.props.searchCriteria) {
+  // useEffect(() => {
+  //   let searchCriteria = handleSearchCriteria();
+  //   fetchSearchResults(searchCriteria).then((data) => {
+  //     setState({ boardGames: cleanData(data.games) });
+  //   });
+  // });
+
+  const handleSearchCriteria = () => {
+    switch (props.searchCriteria) {
       case 'trending':
         return 'order_by=reddit_week_count&limit=10';
       case 'top-10':
         return 'order_by=rank&limit=10';
       case 'max_players=2':
       case 'max_players=4':
-        return this.props.searchCriteria;
+        return props.searchCriteria;
     }
-  }
+  };
 
-  cleanData(data: object[]): MyBoardGame[] {
+  const cleanData = (data: object[]) => {
     let cleanData = data.map((game: any) => {
       return {
         id: game.id,
@@ -59,9 +69,9 @@ class SearchDisplay extends Component<MyProps, AllGames> {
       };
     });
     return cleanData;
-  }
+  };
 
-  createGamePreview(game: PreviewInfo) {
+  const createGamePreview = (game: PreviewInfo) => {
     return (
       <GamePreview
         id={game.id}
@@ -72,18 +82,16 @@ class SearchDisplay extends Component<MyProps, AllGames> {
         max_players={game.max_players}
       />
     );
-  }
+  };
 
-  render() {
-    return (
-      <section className="displayed-games-section">
-        <h1>Search Results</h1>
-        <div className="search-results">
-          {this.state.boardGames.map((game) => this.createGamePreview(game))}
-        </div>
-      </section>
-    );
-  }
-}
+  return (
+    <section className="displayed-games-section">
+      <h1>Search Results</h1>
+      <div className="search-results">
+        {AllGames.map((game: MyBoardGame) => createGamePreview(game))}
+      </div>
+    </section>
+  );
+};
 
 export default SearchDisplay;
