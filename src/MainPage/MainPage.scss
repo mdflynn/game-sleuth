@@ -1,0 +1,56 @@
+.container {
+  margin: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: black;
+}
+
+.search-form {
+  width: 230px;
+  height: 300px;
+  background-color: #d10698c2;
+}
+
+.search-trending {
+  position: absolute;
+  top: 120px;
+  background-color: #ee6960;
+}
+
+.search-top {
+  position: absolute;
+  top: 27px;
+  left: -49px;
+  background-color: #ee6960;
+}
+
+.search-two-player, .search-four-player {
+  position: absolute;
+  top: 27px;
+  left: -45px;
+  background-color: #ee6960;
+}
+
+.remove-link {
+  text-decoration: none;
+  color: black;
+}
+
+.logo {
+  top: -120px;
+  width: 100px;
+  background-color: #ee6960;
+}
+
+.diamond {
+  position: relative;
+  transform: rotate(-30deg) skewX(22deg) scaleX(1) scaleY(.866);
+  border: 1px solid black;
+  padding: 30px;
+  margin: 10px;
+}
+
+.diamond:hover {
+  transform: rotate(-25deg) skewX(22deg) scaleX(1) scaleY(.866);
+}

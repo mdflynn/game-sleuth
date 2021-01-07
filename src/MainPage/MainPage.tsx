@@ -9,69 +9,70 @@ interface MyProps {
 const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
 
   return(
-    <main>
-      {/* <div className="logo">
-        <Logo />
-      </div> */}
+    <main className="container">
+
+      <div className="logo diamond">
+        <h1>LOGO</h1>
+      </div>
 
       <Link
-        className="search-form-link"
+        className="remove-link"
         to="/form"
       >
-        <div className="diamond">
+        <div className="search-form diamond">
           <h1>Search Form</h1>
         </div>
       
       </Link>
 
       <Link 
-        className="search-trending"
+        className=" remove-link"
         to="/trending"
       >
-          <div className=""
+          <div className="search-trending diamond"
           data-value="trending"
           onClick={updateSearchCriteria}
           >
-          Trending Games
+          <h3>Trending Games</h3>
           </div>
           
       </Link>
 
       <Link 
-        className="search-top"
+        className=" remove-link"
         to="/top"
       >
-          <div className=""
+          <div className="search-top diamond"
           data-value="top-10"
           onClick={updateSearchCriteria}
           >
-          Top 10 Games
+          <h3>Top 10 Games</h3>
           </div>
           
       </Link>
 
       <Link 
-        className="search-two-player"
+        className=" remove-link"
         to="/max_player=2"
       >
-          <div className=""
+          <div className="search-two-player diamond"
           data-value="max_players=2"
           onClick={updateSearchCriteria}
           >
-          2 Player Games
+          <h3>2 Player Games</h3>
           </div>
           
       </Link>
 
       <Link 
-        className="search-four-player"
+        className=" remove-link"
         to="/max_players=4"
       >
-          <div className=""
+          <div className="search-four-player diamond"
           data-value="max_player=4"
           onClick={updateSearchCriteria}
           >
-          4 Player Games
+          <h3>4 Player Games</h3>
           </div>
           
       </Link>
