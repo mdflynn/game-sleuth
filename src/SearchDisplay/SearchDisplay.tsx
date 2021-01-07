@@ -17,10 +17,23 @@ class SearchDisplay extends Component<MyProps, AllGames> {
     };
 
   componentDidMount() {
-    fetchSearchResults()
+    let searchCriteria = this.handleSearchCriteria();
+    fetchSearchResults(searchCriteria)
       .then(data => {
         this.setState({boardGames: this.cleanData(data.games)})
       })
+  }
+
+  handleSearchCriteria() {
+    switch (this.props.searchCriteria) {
+      case 'trending':
+        return 'order_by=reddit_week_count&limit=10'
+      case 'top-10':
+        return 'order_by=rank&limit=10'
+      case 'max_players=2':
+      case 'max_players=4':
+        return this.props.searchCriteria;  
+    }
   }
 
   cleanData(data:object[]): MyBoardGame[] {
@@ -48,12 +61,11 @@ class SearchDisplay extends Component<MyProps, AllGames> {
     return cleanData;
   }
 
-  functionToMapDisplayFetchData() {}
+ 
 
   render() {
     return (
       <h1>
-        {this.props.searchCriteria}
         {this.state.boardGames.length > 0 && <h1>{this.state.boardGames[0].name}</h1>}
       </h1>
     );

@@ -29,7 +29,7 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
         to="/trending"
       >
           <div className=""
-          data-value="1"
+          data-value="trending"
           onClick={updateSearchCriteria}
           >
           Trending Games
@@ -42,7 +42,7 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
         to="/top"
       >
           <div className=""
-          data-value="2"
+          data-value="top-10"
           onClick={updateSearchCriteria}
           >
           Top 10 Games
@@ -55,7 +55,7 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
         to="/max_player=2"
       >
           <div className=""
-          data-value="3"
+          data-value="max_players=2"
           onClick={updateSearchCriteria}
           >
           2 Player Games
@@ -65,10 +65,10 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
 
       <Link 
         className="search-four-player"
-        to="/max_player=4"
+        to="/max_players=4"
       >
           <div className=""
-          data-value="4"
+          data-value="max_player=4"
           onClick={updateSearchCriteria}
           >
           4 Player Games

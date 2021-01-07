@@ -17,7 +17,7 @@ class App extends Component<any, SearchState> {
 
 // check what type event should be 
   updateSearchCriteria = (event:any) => {
-    this.setState({ searchCriteria: event.target.value })
+    this.setState({ searchCriteria: event.target.dataset.value })
   }  
 
   render () {
