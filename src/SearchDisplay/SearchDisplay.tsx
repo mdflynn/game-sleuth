@@ -4,35 +4,15 @@ import { MyBoardGame, PreviewInfo } from '../interfaces/MyBoardGame.interface';
 import { fetchSearchResults } from '../APIcalls';
 import GamePreview from '../GamePreview/GamePreview';
 
-interface MyProps {
-  searchCriteria: string;
-}
-
-// interface AllGames {
-//   boardGames: MyBoardGame[];
-// }
-
-const SearchDisplay = (props: MyProps) => {
+const SearchDisplay = (props: { searchCriteria: string }) => {
   const [AllGames, setAllGames] = useState([]);
-
-  // state: AllGames = {
-  //   boardGames: [],
-  // };
 
   useEffect(() => {
     let searchCriteria = handleSearchCriteria();
     fetchSearchResults(searchCriteria).then((data) => {
-      const cleanedData: MyBoardGame[] = cleanData(data.games);
-      setAllGames(cleanedData as any);
+      setAllGames(cleanData(data.games) as any);
     });
   });
-
-  // useEffect(() => {
-  //   let searchCriteria = handleSearchCriteria();
-  //   fetchSearchResults(searchCriteria).then((data) => {
-  //     setState({ boardGames: cleanData(data.games) });
-  //   });
-  // });
 
   const handleSearchCriteria = () => {
     switch (props.searchCriteria) {
@@ -46,8 +26,8 @@ const SearchDisplay = (props: MyProps) => {
     }
   };
 
-  const cleanData = (data: object[]) => {
-    let cleanData = data.map((game: any) => {
+  const cleanData = (data: MyBoardGame[]) => {
+    let cleanedData = data.map((game: MyBoardGame) => {
       return {
         id: game.id,
         name: game.name,
@@ -68,7 +48,7 @@ const SearchDisplay = (props: MyProps) => {
         rules_url: game.rules_url,
       };
     });
-    return cleanData;
+    return cleanedData;
   };
 
   const createGamePreview = (game: PreviewInfo) => {
