@@ -5,7 +5,7 @@ import { fetchSearchResults } from '../APIcalls';
 import GamePreview from '../GamePreview/GamePreview';
 
 const SearchDisplay = (props: { searchCriteria: string }) => {
-  const [AllGames, setAllGames] = useState([]);
+  const [allGames, setAllGames] = useState([]);
 
   useEffect(() => {
     let searchCriteria = handleSearchCriteria();
@@ -27,6 +27,7 @@ const SearchDisplay = (props: { searchCriteria: string }) => {
   };
 
   const cleanData = (data: MyBoardGame[]) => {
+    if (!data) return;
     let cleanedData = data.map((game: MyBoardGame) => {
       return {
         id: game.id,
@@ -55,6 +56,7 @@ const SearchDisplay = (props: { searchCriteria: string }) => {
     return (
       <GamePreview
         id={game.id}
+        key={game.id}
         name={game.name}
         image_url={game.image_url}
         rank={game.rank}
@@ -67,9 +69,11 @@ const SearchDisplay = (props: { searchCriteria: string }) => {
   return (
     <section className="displayed-games-section">
       <h1>Search Results</h1>
-      <div className="search-results">
-        {AllGames.map((game: MyBoardGame) => createGamePreview(game))}
-      </div>
+      {allGames.length > 0 && (
+        <div className="search-results">
+          {allGames.map((game: MyBoardGame) => createGamePreview(game))}
+        </div>
+      )}
     </section>
   );
 };
