@@ -1,7 +1,7 @@
-import './SoloGameView.scss';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchSearchResults } from '../APIcalls';
+import "./SoloGameView.scss";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { fetchSearchResults } from "../APIcalls";
 
 export const SoloGameView = () => {
   const [soloGame, setSoloGame] = useState([]);

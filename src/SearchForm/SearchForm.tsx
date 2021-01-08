@@ -3,17 +3,12 @@ import "./SearchForm.scss";
 import { Slider, Typography } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
 
-// type Props = {
-//   data: (search: string) => void;
-// };
-
 const SearchForm: React.FC = () => {
   const [numPlayers, setNumPlayers] = useState([4, 6]);
   const [playtime, setPlaytime] = useState([15, 45]);
   const [price, setPrice] = useState([15, 30]);
   const [redirector, setRedirector] = useState(false);
-  const [searchString, setSearchString] = useState('');
-
+  const [searchString, setSearchString] = useState("");
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -21,8 +16,8 @@ const SearchForm: React.FC = () => {
     const playtimeSearch = `&gt_min_playtime=${playtime[0]}&lt_max_playtime=${playtime[1]}`;
     const priceSearch = `&lt_price=${price[0]}&gt_price${price[1]}`;
     const search = playerSearch + playtimeSearch + priceSearch;
-    setSearchString(search)
-    setRedirector(true)
+    setSearchString(search);
+    setRedirector(true);
   };
 
   const handlePlayersChange = (event: any, newValue: any) => {
@@ -35,7 +30,7 @@ const SearchForm: React.FC = () => {
     setPrice(newValue);
   };
   if (redirector) {
-    return <Redirect to={`/${searchString}`} />
+    return <Redirect to={`/${searchString}`} />;
   }
 
   return (
@@ -85,20 +80,6 @@ const SearchForm: React.FC = () => {
           aria-labelledby="range-slider"
         />
       </div>
-      {/* <div className="slidecontainer">
-        <Typography id="range-slider" gutterBottom>
-          Minimum Age
-        </Typography>
-        <Slider
-          className="slider"
-          min={8}
-          max={18}
-          value={minAge}
-          onChange={handleAgeChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
-        />
-      </div> */}
       <button onClick={handleSubmit}>Search</button>
     </form>
   );

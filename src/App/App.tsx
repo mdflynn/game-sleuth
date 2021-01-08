@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.scss";
 import SearchDisplay from "../SearchDisplay/SearchDisplay";
 import SearchForm from "../SearchForm/SearchForm";
 import MainPage from "../MainPage/MainPage";
 import { Route, Switch } from "react-router-dom";
-import { SoloGameView } from '../SoloGameView/SoloGameView';
+import { SoloGameView } from "../SoloGameView/SoloGameView";
 
-const App:React.FC = () => {
-  
+const App: React.FC = () => {
   return (
     <main className="App">
       <Switch>
@@ -15,31 +14,27 @@ const App:React.FC = () => {
           exact
           path="/"
           render={() => {
-            return (
-              <MainPage  />
-            );
+            return <MainPage />;
           }}
         />
         <Route
+          exact
           path="/form"
           render={() => {
             return <SearchForm />;
           }}
         />
+        <Route exact path="/:criteria" component={SearchDisplay} />
         <Route
-          path="/:criteria"
-          component={SearchDisplay}
+          exact
+          path="/game/:id"
+          render={() => {
+            return <SoloGameView />;
+          }}
         />
-        <Route
-            exact
-            path="/game/:id"
-            render={() => {
-              return <SoloGameView />;
-            }}
-          />
       </Switch>
     </main>
   );
-}
+};
 
 export default App;
