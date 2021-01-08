@@ -1,18 +1,30 @@
 import React, { useState } from "react";
 import "./SearchForm.scss";
 import { Slider, Typography } from "@material-ui/core";
+import { Link, Redirect } from "react-router-dom";
 
+type Props = {
+  data: (search: string) => void;
+};
 
-const SearchForm:React.FC = () => {
+const SearchForm: React.FC<Props> = ({data}) => {
   const [numPlayers, setNumPlayers] = useState([4, 6]);
   const [playtime, setPlaytime] = useState([15, 45]);
   const [price, setPrice] = useState([15, 30]);
-  const [minAge, setMinAge] = useState(14);
+  // const [minAge, setMinAge] = useState(14);
+  const [redirector, setRedirector] = useState(false);
+  const [searchString, setSearchString] = useState('');
+
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    //fetch data here and pass down method to update searchCriteria in App
-    //which should render SearchDisplay
+    const playerSearch = `gt_min_players=${numPlayers[0]}&lt_max_players=${numPlayers[1]}`;
+    const playtimeSearch = `&gt_min_playtime=${playtime[0]}&lt_max_playtime=${playtime[1]}`;
+    const priceSearch = `&lt_price=${price[0]}&gt_price${price[1]}`;
+    // const ageSearch = `&min_age=${minAge}`;
+    const search = playerSearch + playtimeSearch + priceSearch;
+    setSearchString(search)
+    setRedirector(true)
   };
 
   const handlePlayersChange = (event: any, newValue: any) => {
@@ -24,12 +36,16 @@ const SearchForm:React.FC = () => {
   const handlePriceChange = (event: any, newValue: any) => {
     setPrice(newValue);
   };
-  const handleAgeChange = (event: any, newValue: any) => {
-    setMinAge(newValue);
-  };
+  // const handleAgeChange = (event: any, newValue: any) => {
+  //   setMinAge(newValue);
+  // };
+  
+  if (redirector) {
+    return <Redirect to={`/${searchString}`} />
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <button className="home-button">Return Home</button>
       <h1>Search for Games!</h1>
       <div className="slidecontainer">
@@ -75,7 +91,7 @@ const SearchForm:React.FC = () => {
           aria-labelledby="range-slider"
         />
       </div>
-      <div className="slidecontainer">
+      {/* <div className="slidecontainer">
         <Typography id="range-slider" gutterBottom>
           Minimum Age
         </Typography>
@@ -88,8 +104,8 @@ const SearchForm:React.FC = () => {
           valueLabelDisplay="auto"
           aria-labelledby="range-slider"
         />
-      </div>
-      <button>Search</button>
+      </div> */}
+      <button onClick={handleSubmit}>Search</button>
     </form>
   );
 };

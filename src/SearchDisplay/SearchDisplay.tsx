@@ -1,34 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import './SearchDisplay.scss';
-import { MyBoardGame, PreviewInfo } from '../interfaces/MyBoardGame.interface';
-import { fetchSearchResults } from '../APIcalls';
-import GamePreview from '../GamePreview/GamePreview';
+import React, { useState, useEffect } from "react";
+import "./SearchDisplay.scss";
+import { MyBoardGame, PreviewInfo } from "../interfaces/MyBoardGame.interface";
+import { fetchSearchResults } from "../APIcalls";
+import GamePreview from "../GamePreview/GamePreview";
+import { useParams } from "react-router-dom";
 
-const SearchDisplay = (props: { searchCriteria: string }) => {
+const SearchDisplay = () => {
   const [AllGames, setAllGames] = useState([]);
+  let { criteria }: any = useParams();
 
   useEffect(() => {
     let searchCriteria = handleSearchCriteria();
-    fetchSearchResults(searchCriteria).then((data) => {
-      setAllGames(cleanData(data.games) as any);
-    });
-  });
+
+    fetchSearchResults(searchCriteria)
+      .then((data) => setAllGames(cleanData(data.games) as any))
+      .catch((error) => console.log(error));
+  }, []);
 
   const handleSearchCriteria = () => {
-    switch (props.searchCriteria) {
-      case 'trending':
-        return 'order_by=reddit_week_count&limit=10';
-      case 'top-10':
-        return 'order_by=rank&limit=10';
-      case 'max_players=2':
-      case 'max_players=4':
-        return props.searchCriteria;
+    console.log(criteria);
+
+    switch (criteria) {
+      case "trending":
+        return "order_by=reddit_week_count&limit=10";
+      case "top-10":
+        return "order_by=rank&limit=10";
+      case "max_players=2":
+        return "max_players=2";
+      case "max_players=4":
+        return "max_players=4";
+      default:
+        return criteria;
     }
   };
 
   const cleanData = (data: MyBoardGame[]) => {
-    let cleanedData = data.map((game: MyBoardGame) => {
+    let cleanedData = data.map((game: MyBoardGame, index:number) => {
       return {
+        key: index,
         id: game.id,
         name: game.name,
         min_players: game.min_players,

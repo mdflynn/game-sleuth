@@ -1,46 +1,101 @@
-import React, { Component } from 'react';
-import './App.scss';
-import SearchDisplay from '../SearchDisplay/SearchDisplay';
-import SearchForm from '../SearchForm/SearchForm';
-import MainPage from '../MainPage/MainPage'
-import {  Route, Switch } from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import "./App.scss";
+import SearchDisplay from "../SearchDisplay/SearchDisplay";
+import SearchForm from "../SearchForm/SearchForm";
+import MainPage from "../MainPage/MainPage";
+import { Route, Switch } from "react-router-dom";
 
 interface SearchState {
-  searchCriteria: string,
+  searchCriteria: string;
 }
 
+const App:React.FC = () => {
+  const [searchCriteria, setSearchCriteria] = useState('')
 
-class App extends Component<any, SearchState> {
-  state: SearchState = {
-      searchCriteria: ''
-    }
+  const updateSearchCriteria = (event: any) => {
+    setSearchCriteria(event.target.dataset.value);
+  };
 
-// check what type event should be 
-  updateSearchCriteria = (event:any) => {
-    this.setState({ searchCriteria: event.target.dataset.value })
-  }  
+  const getUserSearchResults = (search: string) => {
+    setSearchCriteria(search);
+  };
+  
+  return (
+    <main className="App">
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return (
+              <MainPage updateSearchCriteria={updateSearchCriteria} />
+            );
+          }}
+        />
+        <Route
+          path="/form"
+          render={() => {
+            return <SearchForm data={getUserSearchResults} />;
+          }}
+        />
+        <Route
+          path="/:criteria"
+          component={SearchDisplay}
+        />
+      </Switch>
+    </main>
+  );
+}
 
-  render () {
-    return (
-      <main className="App">
+// class App extends Component<any, SearchState> {
+//   state: SearchState = {
+//     searchCriteria: "",
+//   };
 
-        <Switch>
+//   // check what type event should be
+  // updateSearchCriteria = (event: any) => {
+  //   this.setState({ searchCriteria: event.target.dataset.value });
+  // };
 
-        <Route exact path="/" render={() => {
-          return <MainPage updateSearchCriteria={this.updateSearchCriteria} />
-        }} />
-        <Route path="/form" render={() => {
-          return <SearchForm />
-        }}/>
-        <Route path="/:criteria" render={() => {
-            return <SearchDisplay searchCriteria={this.state.searchCriteria} />
-        }} />
+  // getUserSearchResults = (search: string) => {
+  //   console.log(search);
 
-        </Switch>
-      
-      </main>
-    )
-  }
-};
+  //   this.setState({ searchCriteria: search });
+
+  //   console.log(this.state.searchCriteria);
+  // };
+
+//   render() {
+//     return (
+//       <main className="App">
+//         <Switch>
+//           <Route
+//             exact
+//             path="/"
+//             render={() => {
+//               return (
+//                 <MainPage updateSearchCriteria={this.updateSearchCriteria} />
+//               );
+//             }}
+//           />
+//           <Route
+//             path="/form"
+//             render={() => {
+//               return <SearchForm data={this.getUserSearchResults} />;
+//             }}
+//           />
+//           <Route
+//             path="/:criteria"
+//             render={() => {
+//               return (
+//                 <SearchDisplay searchCriteria={this.state.searchCriteria} />
+//               );
+//             }}
+//           />
+//         </Switch>
+//       </main>
+//     );
+//   }
+// }
 
 export default App;
