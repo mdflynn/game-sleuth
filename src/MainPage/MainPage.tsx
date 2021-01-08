@@ -2,11 +2,11 @@ import React from 'react';
 import './MainPage.scss';
 import { Link } from "react-router-dom"
 
-interface MyProps {
-  updateSearchCriteria: (event:any) => void
-}
+// interface MyProps {
+//   updateSearchCriteria: (event:any) => void
+// }
 
-const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
+const MainPage:React.FC = () => {
 
   return(
     <main>
@@ -30,7 +30,7 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
       >
           <div className=""
           data-value="trending"
-          onClick={updateSearchCriteria}
+          // onClick={updateSearchCriteria}
           >
           Trending Games
           </div>
@@ -43,7 +43,7 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
       >
           <div className=""
           data-value="top-10"
-          onClick={updateSearchCriteria}
+          // onClick={updateSearchCriteria}
           >
           Top 10 Games
           </div>
@@ -56,7 +56,7 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
       >
           <div className=""
           data-value="max_players=2"
-          onClick={updateSearchCriteria}
+          // onClick={updateSearchCriteria}
           >
           2 Player Games
           </div>
@@ -69,7 +69,7 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
       >
           <div className=""
           data-value="max_player=4"
-          onClick={updateSearchCriteria}
+          // onClick={updateSearchCriteria}
           >
           4 Player Games
           </div>
