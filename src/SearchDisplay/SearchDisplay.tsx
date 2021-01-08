@@ -6,7 +6,7 @@ import GamePreview from "../GamePreview/GamePreview";
 import { useParams } from "react-router-dom";
 
 const SearchDisplay = () => {
-  const [AllGames, setAllGames] = useState([]);
+  const [allGames, setAllGames] = useState([]);
   let { criteria }: any = useParams();
 
   useEffect(() => {
@@ -18,8 +18,6 @@ const SearchDisplay = () => {
   }, []);
 
   const handleSearchCriteria = () => {
-    console.log(criteria);
-
     switch (criteria) {
       case "trending":
         return "order_by=reddit_week_count&limit=10";
@@ -35,9 +33,8 @@ const SearchDisplay = () => {
   };
 
   const cleanData = (data: MyBoardGame[]) => {
-    let cleanedData = data.map((game: MyBoardGame, index:number) => {
+    let cleanedData = data.map((game: MyBoardGame) => {
       return {
-        key: index,
         id: game.id,
         name: game.name,
         min_players: game.min_players,
@@ -60,9 +57,10 @@ const SearchDisplay = () => {
     return cleanedData;
   };
 
-  const createGamePreview = (game: PreviewInfo) => {
+  const createGamePreview = (game: PreviewInfo, index:number) => {
     return (
       <GamePreview
+        key={index}
         id={game.id}
         name={game.name}
         image_url={game.image_url}
@@ -76,8 +74,10 @@ const SearchDisplay = () => {
   return (
     <section className="displayed-games-section">
       <h1>Search Results</h1>
+      {allGames.length === 0 && <h3>Loading...</h3>}
+      {/* something for no results */}
       <div className="search-results">
-        {AllGames.map((game: MyBoardGame) => createGamePreview(game))}
+        {allGames.map((game: MyBoardGame, index:number) => createGamePreview(game, index))}
       </div>
     </section>
   );

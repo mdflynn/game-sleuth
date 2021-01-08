@@ -5,20 +5,18 @@ import SearchForm from "../SearchForm/SearchForm";
 import MainPage from "../MainPage/MainPage";
 import { Route, Switch } from "react-router-dom";
 
-interface SearchState {
-  searchCriteria: string;
-}
+
 
 const App:React.FC = () => {
-  const [searchCriteria, setSearchCriteria] = useState('')
+  // const [searchCriteria, setSearchCriteria] = useState('')
 
-  const updateSearchCriteria = (event: any) => {
-    setSearchCriteria(event.target.dataset.value);
-  };
+  // const updateSearchCriteria = (event: any) => {
+  //   setSearchCriteria(event.target.dataset.value);
+  // };
 
-  const getUserSearchResults = (search: string) => {
-    setSearchCriteria(search);
-  };
+  // const getUserSearchResults = (search: string) => {
+  //   setSearchCriteria(search);
+  // };
   
   return (
     <main className="App">
@@ -28,14 +26,14 @@ const App:React.FC = () => {
           path="/"
           render={() => {
             return (
-              <MainPage updateSearchCriteria={updateSearchCriteria} />
+              <MainPage  />
             );
           }}
         />
         <Route
           path="/form"
           render={() => {
-            return <SearchForm data={getUserSearchResults} />;
+            return <SearchForm />;
           }}
         />
         <Route
