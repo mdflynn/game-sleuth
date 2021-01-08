@@ -47,7 +47,6 @@ const SearchDisplay = () => {
         url: game.url,
         primary_publisher: game.primary_publisher,
         mechanics: game.mechanics,
-        // more processing with ^
         average_user_rating: game.average_user_rating,
         num_user_ratings: game.num_user_ratings,
         rank: game.rank,
@@ -58,10 +57,9 @@ const SearchDisplay = () => {
     return cleanedData;
   };
 
-  const createGamePreview = (game: PreviewInfo, index:number) => {
+  const createGamePreview = (game: PreviewInfo) => {
     return (
       <GamePreview
-        key={index}
         id={game.id}
         key={game.id}
         name={game.name}
@@ -79,10 +77,9 @@ const SearchDisplay = () => {
       {allGames.length === 0 && <h3>Loading...</h3>}
       {allGames.length > 0 && (
         <div className="search-results">
-          {allGames.map((game: MyBoardGame, index:number) => createGamePreview(game, index))}
+          {allGames.map((game: MyBoardGame) => createGamePreview(game))}
         </div>
       )}
-
     </section>
   );
 };
