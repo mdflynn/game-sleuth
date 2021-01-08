@@ -1,5 +1,6 @@
 export interface PreviewInfo {
   id: string;
+  key: string;
   name: string;
   min_players: number;
   max_players: number;
