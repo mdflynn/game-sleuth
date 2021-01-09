@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as API from '../APIcalls';
 import { MyBoardGame } from '../interfaces/MyBoardGame.interface';
+import magGlass from '../assets/mag-hand-right.png';
 
 // interface MechanicsType {
 //   mechanics: [];
@@ -103,31 +104,39 @@ export const SoloGameView = () => {
             <p>MSRP: ${soloGame.price}</p>
           </div>
         </div>
-        {soloMechanics && (
-          <div className="solo-mechanics">
-            <i>
-              <b>Mechanics: </b>
-            </i>
-            {soloGame.mechanics
-              .map((mechanic) => matchMechanicFromId(mechanic))
-              .join(', ')}
-          </div>
-        )}
-        {soloCategories && (
-          <div className="solo-categories">
-            <i>
-              <b>Categories: </b>
-            </i>
-            {soloGame.categories
-              .map((category) => matchCategoryFromId(category))
-              .join(', ')}
-          </div>
-        )}
+        <div className="solo-sub-details">
+          {soloMechanics && (
+            <div>
+              <i>
+                <b>Mechanics: </b>
+              </i>
+              {soloGame.mechanics
+                .map((mechanic) => matchMechanicFromId(mechanic))
+                .join(', ')}
+            </div>
+          )}
+          <br></br>
+          {soloCategories && (
+            <div>
+              <i>
+                <b>Categories: </b>
+              </i>
+              {soloGame.categories
+                .map((category) => matchCategoryFromId(category))
+                .join(', ')}
+            </div>
+          )}
+        </div>
         <div
           className="solo-game-description"
           dangerouslySetInnerHTML={{ __html: soloGame.description }}
         />
-        <a href={soloGame.url}>See more at Board Game Atlas</a>
+        <a className="info-link" href={soloGame.url}>
+          See more at Board Game Atlas
+        </a>
+        <a className="info-link" href={soloGame.rules_url}>
+          Show Me The Rules
+        </a>
       </section>
     );
   }

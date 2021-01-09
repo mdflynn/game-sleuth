@@ -11,25 +11,6 @@
   width: 30em;
 }
 
-// .style-diamond {
-//   position: absolute;
-//   left: 25%;
-//   top: 23%;
-//   transform: rotate(45deg);
-//   background-color: $l-orange;
-//   width: 50em;
-//   height: 50em;
-//   z-index: -1;
-//   opacity: 0.5;
-//  mix-blend-mode: multiply;
-//  }
-
-// .style-diamond:after {
-//   content: '';
-//   display: block;
-//   padding-bottom: 100%;
-// }
-
 .solo-image-wrapper {
   width: 50%;
   background-color: white;
@@ -41,20 +22,24 @@
 }
 
 .solo-game-details {
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
   width: 50%;
-  margin: 2em;
   padding: 2em;
   background: $l-orange;
   background: linear-gradient(
     90deg,
-    rgba(204, 109, 61, 0.35) 33%,
+    rgba(204, 109, 61, 0.25) 33%,
     rgba(163, 180, 200, 0) 100%
   );
+}
+
+.solo-sub-details {
+  padding: 1em;
+  background-color: $blue;
+  color: white;
 }
 
 .solo-game-title {
@@ -65,4 +50,16 @@
 
 .loading-text {
   margin-top: 40vh;
+}
+
+.info-link {
+  padding: 1em;
+}
+
+.sleuth-hand {
+  height: 10em;
+  width: 10 em;
+  //   position: absolute;
+  //   right: 100%;
+  //   bottom: 100%;
 }
