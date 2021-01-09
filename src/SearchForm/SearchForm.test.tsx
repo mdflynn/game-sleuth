@@ -1,12 +1,8 @@
 import React from "react";
 import {
-  fireEvent,
   render,
-  screen,
-  RenderResult,
-  waitFor,
+  screen
 } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
 
@@ -41,6 +37,5 @@ describe("SearchForm", () => {
     const searchButton = screen.getByText("Submit");
     expect(searchButton).toBeInTheDocument();
   });
-
 });
 
