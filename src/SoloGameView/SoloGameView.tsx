@@ -4,7 +4,11 @@ import { useParams } from 'react-router-dom';
 import * as API from '../APIcalls';
 import { MyBoardGame } from '../interfaces/MyBoardGame.interface';
 
-interface SubDetails {
+interface MechanicsType {
+  mechanics: [];
+}
+
+interface Details {
   id: string;
   name: string;
   url: string;
@@ -12,13 +16,15 @@ interface SubDetails {
 
 export const SoloGameView = () => {
   const [soloGame, setSoloGame] = useState<MyBoardGame | null>(null);
+  const [soloMechanics, setSoloMechanics] = useState<MechanicsType>({
+    mechanics: [],
+  });
   const [soloCategories, setSoloCategories] = useState<object>([]);
-  const [soloMechanics, setSoloMechanics] = useState<object>([]);
   const [error, setError] = useState<object | null>(null);
   const location: { id: string } = useParams();
 
-  // useEffect functions cannot be broken out into indivdual functions
-  // causing continual call of useEffect
+  // useEffect functions cannot be broken out into individual functions
+  // or will cause continual call of useEffect
 
   useEffect(() => {
     if (soloGame) return;
@@ -37,10 +43,10 @@ export const SoloGameView = () => {
         .then((data) => {
           switch (detail) {
             case 'categories':
-              setSoloCategories({ categories: data.categories });
+              setSoloCategories(data);
               break;
             case 'mechanics':
-              setSoloMechanics({ mechanics: data.mechanics });
+              setSoloMechanics(data);
               break;
           }
         })
@@ -50,12 +56,8 @@ export const SoloGameView = () => {
     });
   }, [location, soloGame]);
 
-  // const displaySubDetails = (details) => {
-  //   details.map();
-  // };
-
   if (!soloGame) {
-    return <h3>...Sleuthing Details...</h3>;
+    return <h3 className="loading-text">...Sleuthing Details...</h3>;
   } else {
     return (
       <section>
@@ -86,18 +88,21 @@ export const SoloGameView = () => {
             <p>MSRP: ${soloGame.price}</p>
           </div>
         </div>
-        {/* {soloMechanics && (
+        {soloMechanics && (
           <div className="solo-mechanics">
-            {soloGame.mechanics.map((mechanic) =>
-              soloMechanics.find((listMech) => listMech.id === mechanic.id)
-            )}
+            {/* {soloGame.mechanics.map(
+              (mechanic) =>
+                soloMechanics.mechanics.find(
+                  (listMech: { id: string }) => listMech.id === mechanic.id
+                ).name
+            )} */}
           </div>
-        )} */}
+        )}
         <div
           className="solo-game-description"
           dangerouslySetInnerHTML={{ __html: soloGame.description }}
         />
-        <a href={soloGame.url}>More</a>
+        <a href={soloGame.url}>See more at Board Game Atlas</a>
       </section>
     );
   }
