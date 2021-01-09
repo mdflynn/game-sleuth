@@ -3,10 +3,6 @@ import "./SearchForm.scss";
 import { Slider, Typography } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
 
-// type Props = {
-//   data: (search: string) => void;
-// };
-
 const SearchForm: React.FC = () => {
   const [numPlayers, setNumPlayers] = useState([4, 6]);
   const [playtime, setPlaytime] = useState([15, 45]);

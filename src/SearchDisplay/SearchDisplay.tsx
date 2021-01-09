@@ -33,6 +33,7 @@ const SearchDisplay = () => {
   };
 
   const cleanData = (data: MyBoardGame[]) => {
+    if (!data) return;
     let cleanedData = data.map((game: MyBoardGame) => {
       return {
         id: game.id,
@@ -46,7 +47,6 @@ const SearchDisplay = () => {
         url: game.url,
         primary_publisher: game.primary_publisher,
         mechanics: game.mechanics,
-        // more processing with ^
         average_user_rating: game.average_user_rating,
         num_user_ratings: game.num_user_ratings,
         rank: game.rank,
@@ -57,11 +57,11 @@ const SearchDisplay = () => {
     return cleanedData;
   };
 
-  const createGamePreview = (game: PreviewInfo, index:number) => {
+  const createGamePreview = (game: PreviewInfo) => {
     return (
       <GamePreview
-        key={index}
         id={game.id}
+        key={game.id}
         name={game.name}
         image_url={game.image_url}
         rank={game.rank}
@@ -75,10 +75,11 @@ const SearchDisplay = () => {
     <section className="displayed-games-section">
       <h1>Search Results</h1>
       {allGames.length === 0 && <h3>Loading...</h3>}
-      {/* something for no results */}
-      <div className="search-results">
-        {allGames.map((game: MyBoardGame, index:number) => createGamePreview(game, index))}
-      </div>
+      {allGames.length > 0 && (
+        <div className="search-results">
+          {allGames.map((game: MyBoardGame) => createGamePreview(game))}
+        </div>
+      )}
     </section>
   );
 };
