@@ -4,16 +4,13 @@ import {
   render,
   screen,
   RenderResult,
-  waitFor
+  waitFor,
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
-import { Slider } from "@material-ui/core";
 
 import SearchForm from "./SearchForm";
-
-let documentBody: RenderResult;
 
 describe("SearchForm", () => {
   beforeEach(() => {
@@ -25,7 +22,9 @@ describe("SearchForm", () => {
   });
 
   it("should render a SearchForm component", () => {
-    const searchTitle = screen.getByText("Search for Games!");
+    const searchTitle = screen.getByRole("heading", {
+      name: /search for a game! choose a range/i,
+    });
     expect(searchTitle).toBeInTheDocument();
   });
 
@@ -38,88 +37,10 @@ describe("SearchForm", () => {
     expect(slider3).toBeInTheDocument();
   });
 
-  it("should have a search button", () => {
-    const searchButton = screen.getByText("Search");
+  it("should have a submit button", () => {
+    const searchButton = screen.getByText("Submit");
     expect(searchButton).toBeInTheDocument();
   });
 
-  it("should have a hom button", () => {
-    const homeButton = screen.getByText("Return Home");
-    expect(homeButton).toBeInTheDocument();
-  });
 });
 
-describe("SearchForm interaction", () => {
-  it("should change value if slider is moved", () => {
-    documentBody = render(
-      <Slider
-        className="slider"
-        min={1}
-        max={8}
-        value={[3, 5]}
-        onChange={jest.fn()}
-        valueLabelDisplay="auto"
-        aria-label="range-slider"
-        data-testid="numPlayer-slider"
-      />
-    );
-    // const slider = documentBody.findByTestId("numPlayer-slider");
-    const test = [4, 6];
-    // fireEvent(documentBody.getByTestId("numPlayer-slider"), 
-    //     new DragEvent('ondrag')
-    //   )
-    // const setup = () => {
-    //   const utils = render(
-    //     <Slider
-    //       className="slider"
-    //       min={1}
-    //       max={8}
-    //       value={[3, 5]}
-    //       onChange={jest.fn()}
-    //       valueLabelDisplay="auto"
-    //       aria-label="range-slider"
-    //       data-testid="numPlayer-slider"
-    //     />
-    //   );
-    //   const input = utils.getByLabelText("range-slider");
-    //   return {
-    //     input,
-    //     ...utils,
-    //   };
-    // };
-    // const { input } = setup();
-    // fireEvent.change(input, { 
-    //     target: {value: test}
-    // })
-    // var inputValue = (<HTMLInputElement>screen.getElementById(elementId)).value
-    // expect(input.value).toBe(test)
-    // const slider = screen.getByTestId("numPlayer-slider");
-    // console.log(slider);
-
-    // expect(screen.getByDisplayValue(2)).toBeInTheDocument()
-  });
-
-  it("should render search results on submission", async () => {
-    render(
-      <MemoryRouter>
-        <SearchForm />
-      </MemoryRouter>
-    );
-    
-
-    // const searchButton: HTMLElement = await waitFor(() => screen.getByTestId('testbutton'))
-    // userEvent.click((screen.getByText(searchButton.innerHTML)))
-
-    // const results = await waitFor(() => screen.getByText('Search Results'))
-    //  expect(results).toBeInTheDocument();
-
-
-    // const searchButton = screen.getByText('Search');
-    // userEvent.click(searchButton)
-    // const test = await waitFor(() => screen.getByRole('heading', { name: /search results/i }))
-    // expect(test).toBeInTheDocument()
-  });
-  it("should return to the main page on Return Home click", () => {
-    //return home
-  });
-});
