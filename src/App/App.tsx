@@ -3,7 +3,7 @@ import "./App.scss";
 import SearchDisplay from "../SearchDisplay/SearchDisplay";
 import SearchForm from "../SearchForm/SearchForm";
 import MainPage from "../MainPage/MainPage";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import { SoloGameView } from "../SoloGameView/SoloGameView";
 
 const App: React.FC = () => {
@@ -32,6 +32,14 @@ const App: React.FC = () => {
             return <SoloGameView />;
           }}
         />
+        <Route render={() => {
+          return(
+            <section>
+            <h2>This page does not exist</h2>
+            <Link to="/"><button>Return Home</button></Link>
+            </section>
+          )
+        }} />
       </Switch>
     </main>
   );
