@@ -12,7 +12,6 @@ const SearchForm: React.FC = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    rollDice()
     const playerSearch = `gt_min_players=${numPlayers[0]}&lt_max_players=${numPlayers[1]}`;
     const playtimeSearch = `&gt_min_playtime=${playtime[0]}&lt_max_playtime=${playtime[1]}`;
     const priceSearch = `&lt_price=${price[0]}&gt_price${price[1]}`;
