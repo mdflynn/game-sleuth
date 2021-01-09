@@ -1,27 +1,10 @@
-import { screen, render, waitFor, fireEvent } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { screen, render } from '@testing-library/react'
 import MainPage from './MainPage'
 import '@testing-library/jest-dom'
-import { Router, MemoryRouter } from 'react-router-dom';
-import { createMemoryHistory } from 'history'
+import { MemoryRouter } from 'react-router-dom';
 jest.mock('../APIcalls')
 
-// const expectedReturn = {
-//   games: [
-//     {
-//       id: "j8LdPFmePE",
-//       name: "7 Wonders Duel",
-//       min_players: 2,
-//       max_players: 2,
-//       min_age: 10,
-//       image_url:
-//         "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559255812092-51S3zQnsPBL.jpg",
-//       price: "24.97",
-//     },
-//   ],
-// };
-
-describe("App", () => {
+describe("MainPage", () => {
   it("should render search form link", async () => {
     render(
       <MemoryRouter>
