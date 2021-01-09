@@ -34,13 +34,18 @@ const SearchForm: React.FC = () => {
   }
 
   return (
+    <main className="test">
     <div className="search-box">
-      <h2>Search for a game!</h2>
+      <h2>Search for a game!<br />Choose a range</h2>
       <form>
         <div className="user-box">
           <Typography id="range-slider" gutterBottom>
             <h3>Number of Players</h3>
           </Typography>
+          <div className="values-display">
+            <span className="value">{numPlayers[0]}</span>
+            <span className="value">{numPlayers[1]}</span>
+          </div>
           <Slider
             className="slider"
             min={1}
@@ -48,14 +53,18 @@ const SearchForm: React.FC = () => {
             value={numPlayers}
             onChange={handlePlayersChange}
             valueLabelDisplay="auto"
-            aria-labelledby="range-slider"
+            aria-label="range-slider"
             data-testid="numPlayer-slider"
           />
         </div>
         <div className="user-box">
           <Typography id="range-slider" gutterBottom>
-            <h3>Playtime</h3>
+            <h3>Playtime (minutes)</h3>
           </Typography>
+          <div className="values-display">
+            <span className="value">{playtime[0]}</span>
+            <span className="value">{playtime[1]}</span>
+          </div>
           <Slider
             className="slider"
             min={0}
@@ -63,7 +72,7 @@ const SearchForm: React.FC = () => {
             value={playtime}
             onChange={handlePlaytimeChange}
             valueLabelDisplay="auto"
-            aria-labelledby="range-slider"
+            aria-label="range-slider"
             data-testid="playtime-slider"
           />
         </div>
@@ -71,6 +80,10 @@ const SearchForm: React.FC = () => {
           <Typography id="range-slider" gutterBottom>
             <h3>Price</h3>
           </Typography>
+          <div className="values-display">
+            <span className="value">{"$" + price[0]}</span>
+            <span className="value">{"$" + price[1]}</span>
+          </div>
           <Slider
             className="slider"
             min={5}
@@ -78,7 +91,7 @@ const SearchForm: React.FC = () => {
             value={price}
             onChange={handlePriceChange}
             valueLabelDisplay="auto"
-            aria-labelledby="range-slider"
+            aria-label="range-slider"
             data-testid="price-slider"
           />
         </div>
@@ -91,6 +104,7 @@ const SearchForm: React.FC = () => {
         </a>
       </form>
     </div>
+    </main>
   );
 };
 
@@ -110,7 +124,7 @@ export default SearchForm;
           value={numPlayers}
           onChange={handlePlayersChange}
           valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
+          aria-label="range-slider"
           data-testid="numPlayer-slider"
         />
       </div>
@@ -125,7 +139,7 @@ export default SearchForm;
           value={playtime}
           onChange={handlePlaytimeChange}
           valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
+          aria-label="range-slider"
           data-testid="playtime-slider"
         />
       </div>
@@ -140,7 +154,7 @@ export default SearchForm;
           value={price}
           onChange={handlePriceChange}
           valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
+          aria-label="range-slider"
           data-testid="price-slider"
         />
       </div>

@@ -177,3 +177,12 @@ h3 {
     left: 100%;
   }
 }
+
+.values-display {
+  display: flex;
+  justify-content: space-between;
+}
+
+.value {
+  color: #03e9f4;
+}

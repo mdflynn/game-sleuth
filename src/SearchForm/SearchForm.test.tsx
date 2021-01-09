@@ -3,7 +3,8 @@ import {
   fireEvent,
   render,
   screen,
-  RenderResult
+  RenderResult,
+  waitFor
 } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
@@ -64,9 +65,9 @@ describe("SearchForm interaction", () => {
     );
     // const slider = documentBody.findByTestId("numPlayer-slider");
     const test = [4, 6];
-    fireEvent(documentBody.getByTestId("numPlayer-slider"), 
-        new DragEvent('ondrag')
-      )
+    // fireEvent(documentBody.getByTestId("numPlayer-slider"), 
+    //     new DragEvent('ondrag')
+    //   )
     // const setup = () => {
     //   const utils = render(
     //     <Slider
@@ -104,7 +105,15 @@ describe("SearchForm interaction", () => {
         <SearchForm />
       </MemoryRouter>
     );
-    //   expect(1233).toBeInTheDocument()
+    
+
+    // const searchButton: HTMLElement = await waitFor(() => screen.getByTestId('testbutton'))
+    // userEvent.click((screen.getByText(searchButton.innerHTML)))
+
+    // const results = await waitFor(() => screen.getByText('Search Results'))
+    //  expect(results).toBeInTheDocument();
+
+
     // const searchButton = screen.getByText('Search');
     // userEvent.click(searchButton)
     // const test = await waitFor(() => screen.getByRole('heading', { name: /search results/i }))
