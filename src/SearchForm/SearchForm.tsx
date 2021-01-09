@@ -7,15 +7,17 @@ const SearchForm: React.FC = () => {
   const [numPlayers, setNumPlayers] = useState([4, 6]);
   const [playtime, setPlaytime] = useState([15, 45]);
   const [price, setPrice] = useState([15, 30]);
+  const [searchName, setSearchName] = useState("");
   const [redirector, setRedirector] = useState(false);
   const [searchString, setSearchString] = useState("");
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
+
     const playerSearch = `gt_min_players=${numPlayers[0]}&lt_max_players=${numPlayers[1]}`;
     const playtimeSearch = `&gt_min_playtime=${playtime[0]}&lt_max_playtime=${playtime[1]}`;
     const priceSearch = `&lt_price=${price[0]}&gt_price${price[1]}`;
-    const search = playerSearch + playtimeSearch + priceSearch;
+    const search = !searchName ? playerSearch + playtimeSearch + priceSearch : `name=${searchName}`;
     setSearchString(search);
     setRedirector(true);
   };
@@ -29,16 +31,32 @@ const SearchForm: React.FC = () => {
   const handlePriceChange = (event: any, newValue: any) => {
     setPrice(newValue);
   };
+
+  const handleSearchByName = (event: any) => {
+    setSearchName(event.target.value)
+  }
+
   if (redirector) {
     return <Redirect to={`/${searchString}`} />;
   }
 
   return (
     <div className="search-box">
-      <h2>Search for a game!<br />Choose a range</h2>
+      <h2>
+        Search for a game!
+      </h2>
       <form>
         <div className="user-box">
-          <Typography component={'span'} id="range-slider" gutterBottom>
+          <input 
+          type="text" 
+          name="searchName" 
+          value={searchName}
+          onChange={handleSearchByName}
+          placeholder="Search by name" />
+      <h2>Search for range of games</h2>
+        </div>
+        <div className="user-box">
+          <Typography component={"span"} id="range-slider" gutterBottom>
             <h3>Number of Players</h3>
           </Typography>
           <div className="values-display">
@@ -57,7 +75,7 @@ const SearchForm: React.FC = () => {
           />
         </div>
         <div className="user-box">
-          <Typography component={'span'} id="range-slider" gutterBottom>
+          <Typography component={"span"} id="range-slider" gutterBottom>
             <h3>Playtime (minutes)</h3>
           </Typography>
           <div className="values-display">
@@ -76,7 +94,7 @@ const SearchForm: React.FC = () => {
           />
         </div>
         <div className="user-box">
-          <Typography component={'span'} id="range-slider" gutterBottom>
+          <Typography component={"span"} id="range-slider" gutterBottom>
             <h3>Price</h3>
           </Typography>
           <div className="values-display">
