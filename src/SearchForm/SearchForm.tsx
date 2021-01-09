@@ -34,54 +34,75 @@ const SearchForm: React.FC = () => {
   }
 
   return (
-    <form>
-      <button className="home-button">Return Home</button>
-      <h1>Search for Games!</h1>
-      <div className="slidecontainer">
-        <Typography id="range-slider" gutterBottom>
-          Number of Players
-        </Typography>
-        <Slider
-          className="slider"
-          min={1}
-          max={8}
-          name={"test"}
-          value={numPlayers}
-          onChange={handlePlayersChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
-        />
-      </div>
-      <div className="slidecontainer">
-        <Typography id="range-slider" gutterBottom>
-          Playtime
-        </Typography>
-        <Slider
-          className="slider"
-          min={0}
-          max={240}
-          value={playtime}
-          onChange={handlePlaytimeChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
-        />
-      </div>
-      <div className="slidecontainer">
-        <Typography id="range-slider" gutterBottom>
-          Price
-        </Typography>
-        <Slider
-          className="slider"
-          min={5}
-          max={100}
-          value={price}
-          onChange={handlePriceChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
-        />
-      </div>
-      <button onClick={handleSubmit}>Search</button>
-    </form>
+    <div className="search-box">
+      <h2>Search for a game!<br />Choose a range</h2>
+      <form>
+        <div className="user-box">
+          <Typography component={'span'} id="range-slider" gutterBottom>
+            <h3>Number of Players</h3>
+          </Typography>
+          <div className="values-display">
+            <span className="value">{numPlayers[0]}</span>
+            <span className="value">{numPlayers[1]}</span>
+          </div>
+          <Slider
+            className="slider"
+            min={1}
+            max={8}
+            value={numPlayers}
+            onChange={handlePlayersChange}
+            valueLabelDisplay="auto"
+            getAriaLabel={() => "aria-slider"}
+            data-testid="numPlayer-slider"
+          />
+        </div>
+        <div className="user-box">
+          <Typography component={'span'} id="range-slider" gutterBottom>
+            <h3>Playtime (minutes)</h3>
+          </Typography>
+          <div className="values-display">
+            <span className="value">{playtime[0]}</span>
+            <span className="value">{playtime[1]}</span>
+          </div>
+          <Slider
+            className="slider"
+            min={0}
+            max={240}
+            value={playtime}
+            onChange={handlePlaytimeChange}
+            valueLabelDisplay="auto"
+            getAriaLabel={() => "aria-slider"}
+            data-testid="playtime-slider"
+          />
+        </div>
+        <div className="user-box">
+          <Typography component={'span'} id="range-slider" gutterBottom>
+            <h3>Price</h3>
+          </Typography>
+          <div className="values-display">
+            <span className="value">{"$ " + price[0]}</span>
+            <span className="value">{"$ " + price[1]}</span>
+          </div>
+          <Slider
+            className="slider"
+            min={5}
+            max={100}
+            value={price}
+            onChange={handlePriceChange}
+            valueLabelDisplay="auto"
+            getAriaLabel={() => "aria-slider"}
+            data-testid="price-slider"
+          />
+        </div>
+        <a href="#" onClick={handleSubmit}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Submit
+        </a>
+      </form>
+    </div>
   );
 };
 
