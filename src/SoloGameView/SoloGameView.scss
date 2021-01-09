@@ -1,0 +1,36 @@
+@import '../variables';
+
+.solo-game-overview {
+  display: flex;
+  flex-direction: row;
+}
+
+.solo-game-image {
+  margin: 1em;
+  height: auto;
+  width: 30em;
+}
+
+.solo-image-wrapper {
+  width: 50%;
+}
+
+.solo-game-description {
+  text-align: start;
+  margin: 2em;
+}
+
+.solo-game-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 50%;
+  margin: 2em;
+}
+
+.solo-game-title {
+  border-bottom: 2px $l-orange solid;
+  width: 50%;
+  text-align: start;
+}
