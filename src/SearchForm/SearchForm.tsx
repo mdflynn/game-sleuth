@@ -12,8 +12,7 @@ const SearchForm: React.FC = () => {
   const [playtime, setPlaytime] = useState([15, 45]);
   const [price, setPrice] = useState([15, 30]);
   const [redirector, setRedirector] = useState(false);
-  const [searchString, setSearchString] = useState('');
-
+  const [searchString, setSearchString] = useState("");
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -21,8 +20,8 @@ const SearchForm: React.FC = () => {
     const playtimeSearch = `&gt_min_playtime=${playtime[0]}&lt_max_playtime=${playtime[1]}`;
     const priceSearch = `&lt_price=${price[0]}&gt_price${price[1]}`;
     const search = playerSearch + playtimeSearch + priceSearch;
-    setSearchString(search)
-    setRedirector(true)
+    setSearchString(search);
+    setRedirector(true);
   };
 
   const handlePlayersChange = (event: any, newValue: any) => {
@@ -35,11 +34,73 @@ const SearchForm: React.FC = () => {
     setPrice(newValue);
   };
   if (redirector) {
-    return <Redirect to={`/${searchString}`} />
+    return <Redirect to={`/${searchString}`} />;
   }
 
   return (
-    <form>
+    <div className="search-box">
+      <h2>Search for a game!</h2>
+      <form>
+        <div className="user-box">
+          <Typography id="range-slider" gutterBottom>
+            <h3>Number of Players</h3>
+          </Typography>
+          <Slider
+            className="slider"
+            min={1}
+            max={8}
+            value={numPlayers}
+            onChange={handlePlayersChange}
+            valueLabelDisplay="auto"
+            aria-labelledby="range-slider"
+            data-testid="numPlayer-slider"
+          />
+        </div>
+        <div className="user-box">
+          <Typography id="range-slider" gutterBottom>
+            <h3>Playtime</h3>
+          </Typography>
+          <Slider
+            className="slider"
+            min={0}
+            max={240}
+            value={playtime}
+            onChange={handlePlaytimeChange}
+            valueLabelDisplay="auto"
+            aria-labelledby="range-slider"
+            data-testid="playtime-slider"
+          />
+        </div>
+        <div className="user-box">
+          <Typography id="range-slider" gutterBottom>
+            <h3>Price</h3>
+          </Typography>
+          <Slider
+            className="slider"
+            min={5}
+            max={100}
+            value={price}
+            onChange={handlePriceChange}
+            valueLabelDisplay="auto"
+            aria-labelledby="range-slider"
+            data-testid="price-slider"
+          />
+        </div>
+        <a href="#" onClick={handleSubmit}>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Submit
+        </a>
+      </form>
+    </div>
+  );
+};
+
+export default SearchForm;
+{
+  /* <form>
       <button className="home-button">Return Home</button>
       <h1>Search for Games!</h1>
       <div className="slidecontainer">
@@ -50,11 +111,11 @@ const SearchForm: React.FC = () => {
           className="slider"
           min={1}
           max={8}
-          name={"test"}
           value={numPlayers}
           onChange={handlePlayersChange}
           valueLabelDisplay="auto"
           aria-labelledby="range-slider"
+          data-testid="numPlayer-slider"
         />
       </div>
       <div className="slidecontainer">
@@ -69,6 +130,7 @@ const SearchForm: React.FC = () => {
           onChange={handlePlaytimeChange}
           valueLabelDisplay="auto"
           aria-labelledby="range-slider"
+          data-testid="playtime-slider"
         />
       </div>
       <div className="slidecontainer">
@@ -83,25 +145,9 @@ const SearchForm: React.FC = () => {
           onChange={handlePriceChange}
           valueLabelDisplay="auto"
           aria-labelledby="range-slider"
+          data-testid="price-slider"
         />
       </div>
-      {/* <div className="slidecontainer">
-        <Typography id="range-slider" gutterBottom>
-          Minimum Age
-        </Typography>
-        <Slider
-          className="slider"
-          min={8}
-          max={18}
-          value={minAge}
-          onChange={handleAgeChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="range-slider"
-        />
-      </div> */}
       <button onClick={handleSubmit}>Search</button>
-    </form>
-  );
-};
-
-export default SearchForm;
+    </form> */
+}
