@@ -3,9 +3,10 @@ import { screen, render, waitFor, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Router, MemoryRouter } from "react-router-dom";
 import { createMemoryHistory } from "history";
-import SearchDisplay from '../SearchDisplay/SearchDisplay'
+import SearchDisplay from "../SearchDisplay/SearchDisplay";
 import { fetchSearchResults } from "../APIcalls";
 import { act } from "react-dom/test-utils";
+import userEvent from "@testing-library/user-event";
 jest.mock("../APIcalls");
 
 const expectedReturn = {
@@ -23,46 +24,52 @@ const expectedReturn = {
   ],
 };
 
-
-describe('SearchDisplay', () => {
-
+describe("SearchDisplay", () => {
   it("should render correctly", async () => {
     const mockedFetchCall = fetchSearchResults as jest.Mock<any>;
-    mockedFetchCall.mockResolvedValue(expectedReturn);  
+    mockedFetchCall.mockResolvedValue(expectedReturn);
     render(
       <MemoryRouter>
         <SearchDisplay />
       </MemoryRouter>
-    )
-    const header = await waitFor(() => screen.getByText("Search Results"))
-    expect(header).toBeInTheDocument()
-  })
+    );
+    const header = await waitFor(() => screen.getByText("Search Results"));
+    expect(header).toBeInTheDocument();
+  });
 
   it("should render correctly", async () => {
     const mockedFetchCall = fetchSearchResults as jest.Mock<any>;
-    mockedFetchCall.mockResolvedValue(expectedReturn);  
+    mockedFetchCall.mockResolvedValue(expectedReturn);
     render(
       <MemoryRouter>
         <SearchDisplay />
       </MemoryRouter>
-    )
-    const gameTitle = await waitFor(() => screen.getByText("7 Wonders Duel"))
-    expect(gameTitle).toBeInTheDocument()
-  })
-  
+    );
+    const gameTitle = await waitFor(() => screen.getByText("7 Wonders Duel"));
+    expect(gameTitle).toBeInTheDocument();
+  });
+
   it("should render correctly", async () => {
     const mockedFetchCall = fetchSearchResults as jest.Mock<any>;
-    mockedFetchCall.mockResolvedValue(expectedReturn);  
+    mockedFetchCall.mockResolvedValue(expectedReturn);
     render(
       <MemoryRouter>
         <SearchDisplay />
       </MemoryRouter>
-    )
-    const gameTitle = await waitFor(() => screen.getByAltText("7 Wonders Duel"))
-    act(() => {
-      fireEvent.click(gameTitle)
-      const individualView = screen.getByText("Individual View")
-      expect(individualView).toBeInTheDocument()
-    })
-  })
-})
+    );
+    const link = await waitFor(() =>
+      screen.getByRole("Link", { name: '/game/j8LdPFmePE' })
+    );
+    // screen.debug();
+    // const gameTitle = await waitFor(() => screen.getByTestId("7 Wonders Duel"))
+
+    userEvent.click(link);
+
+    screen.debug();
+
+    const individualView = await waitFor(() =>
+      screen.getByText("Individual View")
+    );
+    expect(individualView).toBeInTheDocument();
+  });
+});
