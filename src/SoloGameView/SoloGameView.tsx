@@ -4,24 +4,24 @@ import { useParams } from 'react-router-dom';
 import * as API from '../APIcalls';
 import { MyBoardGame } from '../interfaces/MyBoardGame.interface';
 
-interface MechanicsType {
-  mechanics: [];
-}
+// interface MechanicsType {
+//   mechanics: [];
+// }
 
-interface Details {
-  id: string;
-  name: string;
-  url: string;
-}
+// interface Details {
+//   id: string;
+//   name: string;
+//   url: string;
+// }
 
 export const SoloGameView = () => {
   const [soloGame, setSoloGame] = useState<MyBoardGame | null>(null);
-  const [soloMechanics, setSoloMechanics] = useState<MechanicsType>({
-    mechanics: [],
-  });
-  const [soloCategories, setSoloCategories] = useState<object>([]);
+  const [soloMechanics, setSoloMechanics] = useState<any>({});
+  const [soloCategories, setSoloCategories] = useState<any>({});
   const [error, setError] = useState<object | null>(null);
   const location: { id: string } = useParams();
+
+  //TODO: Change soloMechanics and soloCatagories to use valid types
 
   // useEffect functions cannot be broken out into individual functions
   // or will cause continual call of useEffect
@@ -56,12 +56,27 @@ export const SoloGameView = () => {
     });
   }, [location, soloGame]);
 
+  // TODO: Reformat math id functions into one
+
+  const matchMechanicFromId = (mechanic: { id: string }) => {
+    return soloMechanics.mechanics.find(
+      (listMech: { id: string }) => listMech.id === mechanic.id
+    ).name;
+  };
+
+  const matchCategoryFromId = (category: { id: string }) => {
+    return soloCategories.categories.find(
+      (listCat: { id: string }) => listCat.id === category.id
+    ).name;
+  };
+
   if (!soloGame) {
     return <h3 className="loading-text">...Sleuthing Details...</h3>;
   } else {
     return (
       <section>
         {error && <h1>Unexpected Error Occured: {error}</h1>}
+        <div className="style-diamond"></div>
         <div className="solo-game-overview">
           <div className="solo-image-wrapper">
             <img
@@ -90,12 +105,22 @@ export const SoloGameView = () => {
         </div>
         {soloMechanics && (
           <div className="solo-mechanics">
-            {/* {soloGame.mechanics.map(
-              (mechanic) =>
-                soloMechanics.mechanics.find(
-                  (listMech: { id: string }) => listMech.id === mechanic.id
-                ).name
-            )} */}
+            <i>
+              <b>Mechanics: </b>
+            </i>
+            {soloGame.mechanics
+              .map((mechanic) => matchMechanicFromId(mechanic))
+              .join(', ')}
+          </div>
+        )}
+        {soloCategories && (
+          <div className="solo-categories">
+            <i>
+              <b>Categories: </b>
+            </i>
+            {soloGame.categories
+              .map((category) => matchCategoryFromId(category))
+              .join(', ')}
           </div>
         )}
         <div

@@ -15,6 +15,7 @@ export interface MyBoardGame extends PreviewInfo {
   url: string;
   primary_publisher: { name: string };
   mechanics: { id: string }[];
+  categories: { id: string }[];
   average_user_rating: number;
   num_user_ratings: number;
   trending_rank: number;
