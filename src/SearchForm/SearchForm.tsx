@@ -4,12 +4,12 @@ import { Slider, Typography } from "@material-ui/core";
 import { Redirect } from "react-router-dom";
 
 const SearchForm: React.FC = () => {
-  const [numPlayers, setNumPlayers] = useState([4, 6]);
-  const [playtime, setPlaytime] = useState([15, 45]);
-  const [price, setPrice] = useState([15, 30]);
-  const [searchName, setSearchName] = useState("");
-  const [redirector, setRedirector] = useState(false);
-  const [searchString, setSearchString] = useState("");
+  const [numPlayers, setNumPlayers] = useState<number[]>([4, 6]);
+  const [playtime, setPlaytime] = useState<number[]>([15, 45]);
+  const [price, setPrice] = useState<number[]>([15, 30]);
+  const [searchName, setSearchName] = useState<string>("");
+  const [redirector, setRedirector] = useState<boolean>(false);
+  const [searchString, setSearchString] = useState<string>("");
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -47,7 +47,8 @@ const SearchForm: React.FC = () => {
       </h2>
       <form>
         <div className="user-box">
-          <input 
+          <input
+          id="search-input" 
           type="text" 
           name="searchName" 
           value={searchName}
