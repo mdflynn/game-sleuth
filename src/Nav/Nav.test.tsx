@@ -11,13 +11,12 @@ import Nav from "./Nav";
 import userEvent from "@testing-library/user-event";
 
 describe('Nav', () => {
-    beforeEach(() => {
-        render(
-          <MemoryRouter>
-            <Nav />
-          </MemoryRouter>
-        )});
     it('should render the Nav component', () => {
+        render(
+            <MemoryRouter>
+              <Nav />
+            </MemoryRouter>
+        )
         expect(screen.getByRole('link', { name: /game slueth/i })).toBeInTheDocument();
     })
 })
