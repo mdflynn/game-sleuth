@@ -4,38 +4,39 @@ import { Link } from "react-router-dom";
 
 const MainPage: React.FC = () => {
   return (
-    <main>
-      <Link className="search-form-link" to="/form">
-        <div className="diamond">
+    <ul>
+      <Link className="remove-link" to="/form">
+        <li className="search-form">
           <h1>Search Form</h1>
-        </div>
+        </li>
       </Link>
 
-      <Link className="search-trending" to="/trending">
-        <div className="" data-value="trending">
+      <Link className="remove-link" to="/trending">
+        <li className="search-trending" data-value="trending">
           Trending Games
-        </div>
+        </li>
       </Link>
 
-      <Link className="search-top" to="/top">
-        <div className="" data-value="top-10">
+      <Link className="remove-link" to="/top">
+        <li className="search-top" data-value="top-10">
           Top 10 Games
-        </div>
+        </li>
       </Link>
 
-      <Link className="search-two-player" to="/max_player=2">
-        <div className="" data-value="max_players=2">
+      <Link className="remove-link" to="/max_player=2">
+        <li className="search-two-player" data-value="max_players=2">
           2 Player Games
-        </div>
+        </li>
       </Link>
 
-      <Link className="search-four-player" to="/max_players=4">
-        <div className="" data-value="max_player=4">
+      <Link className="remove-link" to="/max_players=4">
+        <li className="search-four-player" data-value="max_player=4">
           4 Player Games
-        </div>
+        </li>
       </Link>
-    </main>
+    </ul>
   );
 };
+
 
 export default MainPage;
