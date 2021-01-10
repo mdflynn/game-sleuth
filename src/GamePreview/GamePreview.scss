@@ -1,0 +1,45 @@
+.game-image {
+  // transform: rotate(-45deg);
+  width: 175px;
+  height: 175px;
+  justify-content: center;
+  align-content: center;
+  // position: relative;
+  // top: 5px;
+  // left: -20px;
+}
+
+.search-title {
+  color: white;
+  font-size: 30px;
+}
+
+.game-preview {
+  margin: 30px;
+  // transform: rotate(45deg);
+  height: 300px;
+  width: 250px;
+  padding: 30px;
+  background-color: #a3b4c8;
+  opacity: .8;
+}
+
+.game-preview:hover {
+  opacity: 1;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.preview-info {
+  // top: 75px;
+  // left: -75px;
+  // position: relative;
+  // transform: rotate(-45deg);
+  text-decoration: none;
+  color: white;
+  background: transparent;
+}
+
+.game-title, p {
+  color:white;
+  background: transparent;
+}
