@@ -2,23 +2,23 @@
   background-color: #022e51;
 }
 
+.container {
+  margin-top: 100px;
+}
+
 .remove-link {
   text-decoration: none;
   color: white;
 }
 
-img {
-  height: 200px;
-  width: 200px;
-}
-
-h3 {
+.title {
+  color: white;
   background-color: transparent;
   top: 25px;
   left: -40px;
   position: relative;
   transform: rotate(-45deg);
-}
+ }
 
 ul li.search-four-player {
   background-size: 300px;

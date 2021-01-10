@@ -73,7 +73,7 @@ const SearchDisplay = () => {
 
   return (
     <section className="displayed-games-section">
-      <h1>Search Results</h1>
+      <h1 className="search-title">Search Results</h1>
       {allGames.length === 0 && <h3>Loading...</h3>}
       {allGames.length > 0 && (
         <div className="search-results">

@@ -14,7 +14,7 @@ const GamePreview = ({
   return (
     <Link to={`/game/${id}`}>
       <section className="game-preview">
-        <img className="preview-image" src={image_url} alt={name} />
+        <img className="game-image" src={image_url} alt={name} />
         <div className="preview-info">
           <h3 className="game-title">{name}</h3>
           <p>
