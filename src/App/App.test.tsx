@@ -84,7 +84,7 @@ describe("App & MainPage Interactions", () => {
       </Router>
     );
 
-    const header = await waitFor(() => screen.getByText("Search for Games!"));
+    const header = await waitFor(() => screen.getByText("Search for a game!"));
     expect(header).toBeInTheDocument();
   });
 
@@ -139,7 +139,7 @@ describe("SearchForm interaction", () => {
 
     userEvent.click(searchForm);
 
-    const searchButton = screen.getByText("Search");
+    const searchButton = screen.getByText("Submit");
 
     userEvent.click(searchButton);
 
