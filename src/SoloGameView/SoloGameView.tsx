@@ -75,9 +75,8 @@ export const SoloGameView = () => {
     return <h3 className="loading-text">...Sleuthing Details...</h3>;
   } else {
     return (
-      <section>
+      <section className="solo-view-wrapper">
         {error && <h1>Unexpected Error Occured: {error}</h1>}
-        <div className="style-diamond"></div>
         <div className="solo-game-overview">
           <div className="solo-image-wrapper">
             <img
@@ -105,7 +104,7 @@ export const SoloGameView = () => {
           </div>
         </div>
         <div className="solo-sub-details">
-          {soloMechanics && (
+          {soloMechanics.mechanics && (
             <div>
               <i>
                 <b>Mechanics: </b>
@@ -116,7 +115,7 @@ export const SoloGameView = () => {
             </div>
           )}
           <br></br>
-          {soloCategories && (
+          {soloCategories.categories && (
             <div>
               <i>
                 <b>Categories: </b>
@@ -127,16 +126,25 @@ export const SoloGameView = () => {
             </div>
           )}
         </div>
-        <div
-          className="solo-game-description"
-          dangerouslySetInnerHTML={{ __html: soloGame.description }}
-        />
-        <a className="info-link" href={soloGame.url}>
-          See more at Board Game Atlas
-        </a>
-        <a className="info-link" href={soloGame.rules_url}>
-          Show Me The Rules
-        </a>
+        <div className="solo-description-wrapper">
+          <div className="solo-desc-background">
+            <h3 className="solo-game-description">
+              {soloGame.name} at a glance:
+            </h3>
+            <div
+              className="solo-game-description"
+              dangerouslySetInnerHTML={{ __html: soloGame.description }}
+            />
+          </div>
+          <div className="links-section">
+            <a className="info-link" href={soloGame.url}>
+              See more at Board Game Atlas
+            </a>
+            <a className="info-link" href={soloGame.rules_url}>
+              Show Me The Rules
+            </a>
+          </div>
+        </div>
       </section>
     );
   }
