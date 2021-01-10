@@ -9,19 +9,15 @@ interface MyProps {
 const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
 
   return(
-    <main className="container">
-
-      <div className="logo diamond">
-        <h1>LOGO</h1>
-      </div>
+    <ul className="container">
 
       <Link
         className="remove-link"
         to="/form"
       >
-        <div className="search-form diamond">
-          <h1>Search Form</h1>
-        </div>
+        <li className="search-form diamond">
+          <h3>Search Form</h3>
+        </li>
       
       </Link>
 
@@ -29,12 +25,12 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
         className=" remove-link"
         to="/trending"
       >
-          <div className="search-trending diamond"
+          <li className="search-trending"
           data-value="trending"
           onClick={updateSearchCriteria}
           >
           <h3>Trending Games</h3>
-          </div>
+          </li>
           
       </Link>
 
@@ -42,12 +38,12 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
         className=" remove-link"
         to="/top"
       >
-          <div className="search-top diamond"
+          <li className="search-top"
           data-value="top-10"
           onClick={updateSearchCriteria}
           >
           <h3>Top 10 Games</h3>
-          </div>
+          </li>
           
       </Link>
 
@@ -55,12 +51,12 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
         className=" remove-link"
         to="/max_player=2"
       >
-          <div className="search-two-player diamond"
+          <li className="search-two-player"
           data-value="max_players=2"
           onClick={updateSearchCriteria}
           >
           <h3>2 Player Games</h3>
-          </div>
+          </li>
           
       </Link>
 
@@ -68,17 +64,17 @@ const MainPage:React.FC<MyProps> = ({ updateSearchCriteria }) => {
         className=" remove-link"
         to="/max_players=4"
       >
-          <div className="search-four-player diamond"
+          <li className="search-four-player"
           data-value="max_player=4"
           onClick={updateSearchCriteria}
           >
           <h3>4 Player Games</h3>
-          </div>
+          </li>
           
       </Link>
 
       
-    </main>
+    </ul>
   )
 }
 
