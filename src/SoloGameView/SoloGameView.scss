@@ -1,0 +1,65 @@
+@import '../variables';
+
+.solo-game-overview {
+  display: flex;
+  flex-direction: row;
+}
+
+.solo-game-image {
+  margin: 1em;
+  height: auto;
+  width: 30em;
+}
+
+.solo-image-wrapper {
+  width: 50%;
+  background-color: white;
+}
+
+.solo-game-description {
+  text-align: start;
+  margin: 2em;
+}
+
+.solo-game-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 50%;
+  padding: 2em;
+  background: $l-orange;
+  background: linear-gradient(
+    90deg,
+    rgba(204, 109, 61, 0.25) 33%,
+    rgba(163, 180, 200, 0) 100%
+  );
+}
+
+.solo-sub-details {
+  padding: 1em;
+  background-color: $blue;
+  color: white;
+}
+
+.solo-game-title {
+  border-bottom: 2px $l-orange solid;
+  width: 50%;
+  text-align: start;
+}
+
+.loading-text {
+  margin-top: 40vh;
+}
+
+.info-link {
+  padding: 1em;
+}
+
+.sleuth-hand {
+  height: 10em;
+  width: 10 em;
+  //   position: absolute;
+  //   right: 100%;
+  //   bottom: 100%;
+}

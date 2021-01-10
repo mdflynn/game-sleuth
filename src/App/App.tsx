@@ -1,46 +1,52 @@
-import React, { Component } from 'react';
-import './App.scss';
-import SearchDisplay from '../SearchDisplay/SearchDisplay';
-import SearchForm from '../SearchForm/SearchForm';
-import MainPage from '../MainPage/MainPage'
-import {  Route, Switch } from "react-router-dom"
+import React from "react";
+import "./App.scss";
+import SearchDisplay from "../SearchDisplay/SearchDisplay";
+import SearchForm from "../SearchForm/SearchForm";
+import MainPage from "../MainPage/MainPage";
+import { Route, Switch, Link } from "react-router-dom";
+import { SoloGameView } from "../SoloGameView/SoloGameView";
+import Nav from '../Nav/Nav';
 
-interface SearchState {
-  searchCriteria: string,
-}
-
-
-class App extends Component<any, SearchState> {
-  state: SearchState = {
-      searchCriteria: ''
-    }
-
-// check what type event should be 
-  updateSearchCriteria = (event:any) => {
-    this.setState({ searchCriteria: event.target.dataset.value })
-  }  
-
-  render () {
-    return (
-      <main className="App">
-
-        <Switch>
-
-        <Route exact path="/" render={() => {
-          return <MainPage updateSearchCriteria={this.updateSearchCriteria} />
+const App: React.FC = () => {
+  return (
+    <>
+    <Nav />
+    <main className="App">
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={() => {
+            return <MainPage />;
+          }}
+        />
+        <Route
+          exact
+          path="/form"
+          render={() => {
+            return <SearchForm />;
+          }}
+        />
+        <Route exact path="/:criteria" component={SearchDisplay} />
+        <Route
+          exact
+          path="/game/:id"
+          render={() => {
+            return <SoloGameView />;
+          }}
+        />
+        <Route render={() => {
+          return(
+            <section>
+            <h2>This page does not exist</h2>
+            <Link to="/"><button>Return Home</button></Link>
+            </section>
+          )
         }} />
-        <Route path="/form" render={() => {
-          return <SearchForm />
-        }}/>
-        <Route path="/:criteria" render={() => {
-            return <SearchDisplay searchCriteria={this.state.searchCriteria} />
-        }} />
-
-        </Switch>
-      
-      </main>
-    )
-  }
+      </Switch>
+    </main>
+  </>
+ );
 };
 
 export default App;
