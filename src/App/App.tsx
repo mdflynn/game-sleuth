@@ -5,9 +5,12 @@ import SearchForm from "../SearchForm/SearchForm";
 import MainPage from "../MainPage/MainPage";
 import { Route, Switch, Link } from "react-router-dom";
 import { SoloGameView } from "../SoloGameView/SoloGameView";
+import Nav from '../Nav/Nav';
 
 const App: React.FC = () => {
   return (
+    <>
+    <Nav />
     <main className="App">
       <Switch>
         <Route
@@ -42,7 +45,8 @@ const App: React.FC = () => {
         }} />
       </Switch>
     </main>
-  );
+  </>
+ );
 };
 
 export default App;

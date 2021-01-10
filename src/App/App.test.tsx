@@ -265,5 +265,24 @@ describe("Incorrect Path interaction", () => {
 
     expect(homeButton).not.toBeInTheDocument();
   });
+
+  it("should be able to return home on click", async () => {
+    render(
+      <MemoryRouter>
+        <App />
+      </MemoryRouter>
+    )
+      const searchForm = screen.getByRole('link', { name: /search form/i });
+      userEvent.click(searchForm)
+
+      const searchGame = screen.getByRole('heading', { name: /search for a game!/i });
+      expect(searchGame).toBeInTheDocument();
+
+      const homeButton =screen.getByRole('link', { name: /game slueth/i });
+      userEvent.click(homeButton)
+
+      const homePage = screen.getByRole('link', { name: /search form/i });
+      expect(homePage).toBeInTheDocument();
+  })
 });
 
