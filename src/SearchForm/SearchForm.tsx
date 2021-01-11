@@ -46,33 +46,34 @@ const SearchForm: React.FC = () => {
   }
 
   return (
-    <div className="search-box">
-      <h2>Search for a game!</h2>
-      <form>
-        <div className="user-box">
-          <input
-            id="search-input"
-            type="text"
-            name="searchName"
-            value={searchName}
-            onChange={handleSearchByName}
-            onKeyPress={(event) => {
-              if (event.key === 'Enter') {
-                handleSubmit(event);
-              }
-            }}
-            placeholder="Search by name"
-          />
-          <h2>Search for range of games</h2>
-        </div>
-        <div className="user-box">
+    <section>
+      <div className="search-box">
+        <h2>Search for a game!</h2>
+        <form>
+          <div className="user-box">
+            <input
+              id="search-input"
+              type="text"
+              name="searchName"
+              value={searchName}
+              onChange={handleSearchByName}
+              onKeyPress={(event) => {
+                if (event.key === 'Enter') {
+                  handleSubmit(event);
+                }
+              }}
+              placeholder="Search by name"
+            />
+            {/* <h2>Search for range of games</h2> */}
+          </div>
+          {/* <div className="user-box">
           <Typography component={'span'} id="range-slider" gutterBottom>
             <h3 className="search-criteria-font">Number of Players</h3>
           </Typography>
           <div className="values-display">
             <span className="value">{numPlayers[0]}</span>
             <span className="value">{numPlayers[1]}</span>
-          </div>
+          </div> */}
           <div className="user-box">
             <Typography component={'span'} id="range-slider" gutterBottom>
               <h3 className="search-criteria-font">Number of Players</h3>
@@ -138,7 +139,7 @@ const SearchForm: React.FC = () => {
             Submit
           </a>
         </form>
-      </div>{' '}
+      </div>
       <img
         className="mag-hand-search-form"
         alt="Magnifier Hand"
