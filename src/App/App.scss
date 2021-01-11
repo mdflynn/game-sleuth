@@ -2,7 +2,12 @@
 @import '../variables.scss';
 
 html {
-  background-color: $blue;
+  background: rgb(60, 107, 143);
+  background: radial-gradient(
+    circle,
+    rgba(60, 107, 143, 1) 0%,
+    rgba(2, 46, 81, 1) 90%
+  );
   height: 100%;
   width: 100%;
 }

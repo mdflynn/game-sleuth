@@ -1,6 +1,7 @@
 import React from 'react';
 import './MainPage.scss';
 import { Link } from 'react-router-dom';
+import magHand from '../assets/mag-hand.png';
 
 const MainPage: React.FC = () => {
   return (
@@ -36,6 +37,7 @@ const MainPage: React.FC = () => {
           </li>
         </Link>
       </ul>
+      <img className="mag-hand" alt="Magnifier Hand" src={magHand} />
     </main>
   );
 };

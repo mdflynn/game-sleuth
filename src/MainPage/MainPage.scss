@@ -5,11 +5,19 @@
   color: white;
 }
 
+.mag-hand {
+  position: fixed;
+  left: -8em;
+  bottom: -3em;
+  height: 25em;
+  z-index: -1;
+  overflow: hidden;
+}
+
 .title {
   color: white;
-  background-color: transparent;
-  top: 25px;
-  left: -40px;
+  top: 50px;
+  left: -20px;
   position: relative;
   transform: rotate(-45deg);
 }
@@ -38,7 +46,7 @@
   background-repeat: no-repeat;
   background-size: 300px, 300px;
   background-image: url('../assets/gunslinger-image.jpg');
-  background-color: #cc6d3d;
+  background-color: $l-orange;
   top: 0;
   left: 100%;
 }
