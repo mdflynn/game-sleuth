@@ -2,6 +2,14 @@
   color: white;
 }
 
+.mag-hand-search {
+  opacity: 0.5;
+  position: relative;
+  height: 25em;
+  z-index: -1;
+  overflow: hidden;
+}
+
 .search-results {
   padding: 0.25em;
   display: flex;

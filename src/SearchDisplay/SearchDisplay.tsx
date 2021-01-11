@@ -4,6 +4,7 @@ import { MyBoardGame, PreviewInfo } from '../interfaces/MyBoardGame.interface';
 import { fetchSearchResults } from '../APIcalls';
 import GamePreview from '../GamePreview/GamePreview';
 import { useParams } from 'react-router-dom';
+import magHand from '../assets/mag-hand.png';
 
 const SearchDisplay = () => {
   const [allGames, setAllGames] = useState([]);
@@ -105,6 +106,7 @@ const SearchDisplay = () => {
           </div>
         </section>
       )}
+      <img className="mag-hand-search" alt="Magnifier Hand" src={magHand} />
     </section>
   );
 };

@@ -5,7 +5,7 @@
   color: white;
 }
 
-.mag-hand {
+.mag-hand-home {
   position: fixed;
   left: -8em;
   bottom: -3em;
@@ -20,6 +20,17 @@
   left: -20px;
   position: relative;
   transform: rotate(-45deg);
+}
+
+.list-wrapper {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  width: 600px;
+  height: 150px;
 }
 
 .list-wrapper li.search-four-player {
@@ -37,9 +48,15 @@
 }
 
 .list-wrapper li.search-top {
-  background-color: #a3b4c8;
-  bottom: 0;
+  background: rgb(232, 232, 232);
+  background: radial-gradient(
+    circle,
+    rgba(232, 232, 232, 0.25) 0%,
+    rgba(163, 180, 200, 1) 96%
+  );
+  bottom: -1.75em;
   left: 75%;
+  transform: rotate(45deg) scale(1.2);
 }
 
 .list-wrapper li.search-two-player {
@@ -52,20 +69,14 @@
 }
 
 .list-wrapper li.search-form {
-  background-color: #cc6d3d;
-  top: 0;
-  left: 0;
-}
-
-.list-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
-  padding: 0;
-  width: 600px;
-  height: 150px;
+  background: rgb(204, 109, 61);
+  background: radial-gradient(
+    circle,
+    rgba(204, 109, 61, 1) 0%,
+    rgba(183, 72, 3, 1) 90%
+  );
+  transform: scale(1.5) rotate(45deg);
+  bottom: 14em;
 }
 
 .list-wrapper li {

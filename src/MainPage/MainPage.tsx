@@ -9,7 +9,7 @@ const MainPage: React.FC = () => {
       <ul className="list-wrapper">
         <Link className="remove-link" to="/form">
           <li className="search-form">
-            <h3 className="title">Search Form</h3>
+            <h3 className="title">Search All Games</h3>
           </li>
         </Link>
 
@@ -37,7 +37,7 @@ const MainPage: React.FC = () => {
           </li>
         </Link>
       </ul>
-      <img className="mag-hand" alt="Magnifier Hand" src={magHand} />
+      <img className="mag-hand-home" alt="Magnifier Hand" src={magHand} />
     </main>
   );
 };

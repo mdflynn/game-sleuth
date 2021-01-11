@@ -1,40 +1,42 @@
 nav {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .sleuth {
-    height: 100px;
-    width: 100px;
-    padding: 15px 25px;
-    font-size: 24px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    border: none;
-    border-radius: 15px;
-  }
-  
-  .sleuth:hover, .sleuth-link:hover {
-    transform: translateY(1px)
-  }
-  
-  .sleuth:active, .sleuth-link:active {
-    transform: translateY(4px);
-  }
+  height: 100px;
+  width: 100px;
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+}
 
-  .sleuth-div {
-      display: flex;
-      align-items: center;
-  }
-  
-  .sleuth-link {
-      text-decoration: none;
-  }
+.sleuth:hover,
+.sleuth-link:hover {
+  transform: translateY(1px);
+}
 
-  .sleuth-link:visited {
-      text-decoration: none;
-      color: white;
-  }
+.sleuth:active,
+.sleuth-link:active {
+  transform: translateY(4px);
+}
+
+.sleuth-div {
+  display: flex;
+  align-items: center;
+}
+
+.sleuth-link {
+  text-decoration: none;
+}
+
+.sleuth-link:visited {
+  text-decoration: none;
+  color: white;
+}
