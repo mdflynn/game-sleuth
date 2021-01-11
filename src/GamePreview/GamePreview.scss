@@ -5,8 +5,10 @@
   height: 175px;
   justify-content: center;
   align-content: center;
-  -webkit-box-shadow: 0px 0px 25px 15px #ffffff;
-  box-shadow: 0px 0px 25px 15px #ffffff;
+  border: $l-orange 2px solid;
+  // -webkit-box-shadow: 0px 0px 25px 15px #ffffff;
+  // box-shadow: 0px 0px 25px 15px #ffffff;
+  // mix-blend-mode: multiply;
 }
 
 .search-title {
@@ -15,16 +17,18 @@
 }
 
 .game-preview {
-  margin: 30px;
-  height: 300px;
-  width: 250px;
-  padding: 30px;
-  background-color: #a3b4c8;
-  opacity: 0.8;
+  margin: 2em;
+  width: 15em;
+  height: auto;
+  padding: 2em;
+  background-color: rgba(163, 180, 200, 0.7);
+  border-top-left-radius: 3em;
+  border-bottom-right-radius: 3em;
+  transition: 0.25s ease all;
 }
 
 .game-preview:hover {
-  opacity: 1;
+  background-color: rgba(163, 180, 200, 0.85);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
@@ -35,5 +39,4 @@
 
 .game-title {
   color: white;
-  background: transparent;
 }

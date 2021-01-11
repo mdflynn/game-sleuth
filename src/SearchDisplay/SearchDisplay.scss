@@ -8,19 +8,28 @@
   height: 25em;
   z-index: -1;
   overflow: hidden;
+  transform-origin: left bottom;
+  animation: 2s ease loading infinite;
 }
 
 .search-results {
-  padding: 0.25em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: center;
-  margin: 0.25em;
 }
 
 .matches-num {
   font-size: 0.5em;
   font-style: italic;
+}
+
+@keyframes loading {
+  33% {
+    transform: rotate(8deg);
+  }
+  66% {
+    transform: translateX(15px) translateX(15px) rotate(4deg);
+  }
 }

@@ -64,16 +64,7 @@ const SearchForm: React.FC = () => {
               }}
               placeholder="Search by name"
             />
-            {/* <h2>Search for range of games</h2> */}
           </div>
-          {/* <div className="user-box">
-          <Typography component={'span'} id="range-slider" gutterBottom>
-            <h3 className="search-criteria-font">Number of Players</h3>
-          </Typography>
-          <div className="values-display">
-            <span className="value">{numPlayers[0]}</span>
-            <span className="value">{numPlayers[1]}</span>
-          </div> */}
           <div className="user-box">
             <Typography component={'span'} id="range-slider" gutterBottom>
               <h3 className="search-criteria-font">Number of Players</h3>
