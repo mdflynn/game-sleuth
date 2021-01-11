@@ -1,10 +1,4 @@
-// * {
-//   background-color: #022e51;
-// }
-
-.container {
-  margin-top: 100px;
-}
+@import '../_variables.scss';
 
 .remove-link {
   text-decoration: none;
@@ -20,27 +14,27 @@
   transform: rotate(-45deg);
 }
 
-ul li.search-four-player {
+.list-wrapper li.search-four-player {
   background-size: 300px;
   background-image: url('../assets/darts-image.jpg');
   bottom: 0;
   left: 25%;
 }
 
-ul li.search-trending {
+.list-wrapper li.search-trending {
   background-size: 300px, 300px;
   background-image: url('../assets/scrable-image.jpg');
   top: 0;
   left: 50%;
 }
 
-ul li.search-top {
+.list-wrapper li.search-top {
   background-color: #a3b4c8;
   bottom: 0;
   left: 75%;
 }
 
-ul li.search-two-player {
+.list-wrapper li.search-two-player {
   background-repeat: no-repeat;
   background-size: 300px, 300px;
   background-image: url('../assets/gunslinger-image.jpg');
@@ -49,13 +43,13 @@ ul li.search-two-player {
   left: 100%;
 }
 
-ul li.search-form {
+.list-wrapper li.search-form {
   background-color: #cc6d3d;
   top: 0;
   left: 0;
 }
 
-ul {
+.list-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -66,7 +60,7 @@ ul {
   height: 150px;
 }
 
-ul li {
+.list-wrapper li {
   border: 1px solid #b74803;
   list-style: none;
   position: absolute;
@@ -80,6 +74,6 @@ ul li {
   opacity: 0.8;
 }
 
-ul li:hover {
+.list-wrapper li:hover {
   opacity: 1;
 }

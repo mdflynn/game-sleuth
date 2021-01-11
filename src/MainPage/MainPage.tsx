@@ -1,11 +1,11 @@
-import React from "react";
-import "./MainPage.scss";
-import { Link } from "react-router-dom";
+import React from 'react';
+import './MainPage.scss';
+import { Link } from 'react-router-dom';
 
 const MainPage: React.FC = () => {
   return (
     <main className="container">
-      <ul>
+      <ul className="list-wrapper">
         <Link className="remove-link" to="/form">
           <li className="search-form">
             <h3 className="title">Search Form</h3>
@@ -39,6 +39,5 @@ const MainPage: React.FC = () => {
     </main>
   );
 };
-
 
 export default MainPage;
