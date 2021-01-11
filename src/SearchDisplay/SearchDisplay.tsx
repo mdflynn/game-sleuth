@@ -7,13 +7,20 @@ import { useParams } from "react-router-dom";
 
 const SearchDisplay = () => {
   const [allGames, setAllGames] = useState([]);
+  const [noResults, setNoResults] = useState<boolean>(false)
   let { criteria }: any = useParams();
 
   useEffect(() => {
     let searchCriteria = handleSearchCriteria();
 
     fetchSearchResults(searchCriteria)
-      .then((data) => setAllGames(cleanData(data.games) as any))
+      .then((data) => {
+        if (data.games.length > 0) {
+        setAllGames(cleanData(data.games) as any)
+        } else {
+          setNoResults(true)
+        }
+      })
       .catch((error) => console.log(error));
   }, []);
 
@@ -71,10 +78,14 @@ const SearchDisplay = () => {
     );
   };
 
+  const handleLoadingScreen = () => {
+    return noResults ? <h3>No search results<br />Try again!</h3> : <h3>Loading...</h3>
+  }
+
   return (
     <section className="displayed-games-section">
       <h1 className="search-title">Search Results</h1>
-      {allGames.length === 0 && <h3>Loading...</h3>}
+      {allGames.length === 0 && handleLoadingScreen()}
       {allGames.length > 0 && (
         <div className="search-results">
           {allGames.map((game: MyBoardGame) => createGamePreview(game))}
