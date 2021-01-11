@@ -1,8 +1,8 @@
 @import '../variables.scss';
 
 .game-image {
-  width: 175px;
-  height: 175px;
+  width: 20em;
+  height: auto;
   justify-content: center;
   align-content: center;
   border: $l-orange 2px solid;
@@ -18,17 +18,17 @@
 
 .game-preview {
   margin: 2em;
-  width: 15em;
+  width: auto;
   height: auto;
-  padding: 2em;
-  background-color: rgba(163, 180, 200, 0.7);
+  padding: 1.5em;
+  background-color: rgba(163, 180, 200, 0.6);
   border-top-left-radius: 3em;
   border-bottom-right-radius: 3em;
-  transition: 0.25s ease all;
+  transition: ease 0.25s;
 }
 
 .game-preview:hover {
-  background-color: rgba(163, 180, 200, 0.85);
+  background-color: rgba(163, 180, 200, 0.75);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 

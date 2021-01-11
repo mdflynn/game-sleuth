@@ -96,10 +96,10 @@ const SearchDisplay = () => {
       {allGames.length === 0 && handleLoadingScreen()}
       {allGames.length > 0 && (
         <section>
-          <h1 className="search-title">
+          <h2 className="search-title">
             Search Results{' '}
             <span className="matches-num">({allGames.length} matches)</span>
-          </h1>
+          </h2>
 
           <div className="search-results">
             {allGames.map((game: MyBoardGame) => createGamePreview(game))}
