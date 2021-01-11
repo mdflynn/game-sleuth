@@ -1,6 +1,6 @@
-* {
-  background-color: #022e51;
-}
+// * {
+//   background-color: #022e51;
+// }
 
 .container {
   margin-top: 100px;
@@ -18,18 +18,18 @@
   left: -40px;
   position: relative;
   transform: rotate(-45deg);
- }
+}
 
 ul li.search-four-player {
   background-size: 300px;
-  background-image: url("../assets/darts-image.jpg");
+  background-image: url('../assets/darts-image.jpg');
   bottom: 0;
   left: 25%;
 }
 
 ul li.search-trending {
   background-size: 300px, 300px;
-  background-image: url("../assets/scrable-image.jpg");
+  background-image: url('../assets/scrable-image.jpg');
   top: 0;
   left: 50%;
 }
@@ -43,7 +43,7 @@ ul li.search-top {
 ul li.search-two-player {
   background-repeat: no-repeat;
   background-size: 300px, 300px;
-  background-image: url("../assets/gunslinger-image.jpg");
+  background-image: url('../assets/gunslinger-image.jpg');
   background-color: #cc6d3d;
   top: 0;
   left: 100%;

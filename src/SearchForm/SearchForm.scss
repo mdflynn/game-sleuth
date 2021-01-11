@@ -1,3 +1,7 @@
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
 .search-box {
   position: absolute;
   top: 50%;
@@ -51,9 +55,6 @@
   left: 0;
   color: #03e9f4;
   font-size: 12px;
-}
-input:focus::-webkit-input-placeholder {
-  color: transparent;
 }
 
 .search-box form a {
