@@ -14,9 +14,11 @@ const SearchForm: React.FC = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault();
 
-    const playerSearch = `gt_min_players=${numPlayers[0]}&lt_max_players=${numPlayers[1]}`;
+    const playerSearch = `gt_min_players=${numPlayers[0] - 1}&lt_max_players=${numPlayers[1] + 1}`;
     const playtimeSearch = `&gt_min_playtime=${playtime[0]}&lt_max_playtime=${playtime[1]}`;
     const priceSearch = `&lt_price=${price[0]}&gt_price${price[1]}`;
+    console.log(playerSearch);
+    
     const search = !searchName ? playerSearch + playtimeSearch + priceSearch : `name=${searchName}`;
     setSearchString(search);
     setRedirector(true);
