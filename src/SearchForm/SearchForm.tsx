@@ -53,6 +53,11 @@ const SearchForm: React.FC = () => {
           name="searchName" 
           value={searchName}
           onChange={handleSearchByName}
+          onKeyPress={(event) => {
+            if (event.key === 'Enter') {
+              handleSubmit(event)
+            }
+          }}
           placeholder="Search by name" />
       <h2>Search for range of games</h2>
         </div>
