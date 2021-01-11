@@ -4,16 +4,6 @@ import { useParams } from 'react-router-dom';
 import * as API from '../APIcalls';
 import { MyBoardGame } from '../interfaces/MyBoardGame.interface';
 
-// interface MechanicsType {
-//   mechanics: [];
-// }
-
-// interface Details {
-//   id: string;
-//   name: string;
-//   url: string;
-// }
-
 export const SoloGameView = () => {
   const [soloGame, setSoloGame] = useState<MyBoardGame | null>(null);
   const [soloMechanics, setSoloMechanics] = useState<any>({});
@@ -22,9 +12,6 @@ export const SoloGameView = () => {
   const location: { id: string } = useParams();
 
   //TODO: Change soloMechanics and soloCatagories to use valid types
-
-  // useEffect functions cannot be broken out into individual functions
-  // or will cause continual call of useEffect
 
   useEffect(() => {
     if (soloGame) return;

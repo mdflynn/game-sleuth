@@ -1,5 +1,11 @@
+@import '../variables.scss';
+
 input:focus::-webkit-input-placeholder {
   color: transparent;
+}
+
+.search-criteria-font {
+  color: white;
 }
 
 .search-box {
