@@ -86,7 +86,7 @@ export const SoloGameView = () => {
               />
             </div>
             <div className="solo-game-details">
-              <h2 className="solo-game-title">{soloGame.name}</h2>
+              <h1 className="solo-game-title">{soloGame.name}</h1>
               <h3>
                 {soloGame.min_players}-{soloGame.max_players} Players
               </h3>
