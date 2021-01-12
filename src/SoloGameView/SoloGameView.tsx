@@ -52,11 +52,11 @@ export const SoloGameView = () => {
     });
 
     return function cleanup() {
-      mounted = false;
+      if (soloMechanics && soloCategories && soloGame) {
+        mounted = false;
+      }
     };
-  }, [location, soloGame]);
-
-  // TODO: Reformat match id functions into one
+  });
 
   const matchMechanicFromId = (mechanic: { id: string }) => {
     return soloMechanics.mechanics.find(
@@ -71,7 +71,7 @@ export const SoloGameView = () => {
   };
 
   if (!soloGame) {
-    return <h3 className="loading-text">...Sleuthing Details...</h3>;
+    return <h3 className="solo-loading-text">...Sleuthing Details...</h3>;
   } else {
     return (
       <section className="solo-view-wrapper" data-testid="solo-view-test">
@@ -141,9 +141,11 @@ export const SoloGameView = () => {
               <a className="info-link" href={soloGame.url}>
                 See more at Board Game Atlas
               </a>
-              <a className="info-link" href={soloGame.rules_url}>
-                Show Me The Rules
-              </a>
+              {soloGame.rules_url && (
+                <a className="info-link" href={soloGame.rules_url}>
+                  Show Me The Rules
+                </a>
+              )}
             </div>
           </div>
         </div>

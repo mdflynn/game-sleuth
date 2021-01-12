@@ -87,7 +87,10 @@ const SearchDisplay = () => {
         Try again!
       </h3>
     ) : (
-      <h3 className="status-font">...Sleuthing Games...</h3>
+      <section>
+        <h3 className="status-font">...Sleuthing Games...</h3>
+        <img className="mag-hand-search" alt="Magnifier Hand" src={magHand} />
+      </section>
     );
   };
 
@@ -104,9 +107,9 @@ const SearchDisplay = () => {
           <div className="search-results">
             {allGames.map((game: MyBoardGame) => createGamePreview(game))}
           </div>
+          <img className="mag-hand-static" alt="Magnifier Hand" src={magHand} />
         </section>
       )}
-      <img className="mag-hand-search" alt="Magnifier Hand" src={magHand} />
     </section>
   );
 };

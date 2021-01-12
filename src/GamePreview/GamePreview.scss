@@ -29,11 +29,15 @@
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.preview-info > * {
-  text-decoration: none;
+.preview-info {
   color: white;
 }
 
+.preview-link {
+  text-decoration: none;
+}
+
 .game-title {
+  font-size: 1.25em;
   color: white;
 }

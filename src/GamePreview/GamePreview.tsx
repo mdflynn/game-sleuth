@@ -12,7 +12,7 @@ const GamePreview = ({
   rank,
 }: PreviewInfo) => {
   return (
-    <Link to={`/game/${id}`}>
+    <Link to={`/game/${id}`} className="preview-link">
       <section className="game-preview">
         <img className="game-image" src={image_url} alt={name} />
         <div className="preview-info">
