@@ -22,6 +22,13 @@ const App: React.FC = () => {
         />
         <Route
           exact
+          path="/game-sleuth"
+          render={() => {
+            return <MainPage />;
+          }}
+        />
+        <Route
+          exact
           path="/form"
           render={() => {
             return <SearchForm />;
