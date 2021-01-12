@@ -1,10 +1,10 @@
-import { screen, render } from '@testing-library/react'
-import MainPage from './MainPage'
-import '@testing-library/jest-dom'
-import { MemoryRouter } from 'react-router-dom';
-jest.mock('../APIcalls')
+import { screen, render } from "@testing-library/react";
+import MainPage from "./MainPage";
+import "@testing-library/jest-dom";
+import { MemoryRouter } from "react-router-dom";
+jest.mock("../APIcalls");
 
-describe("MainPage", () => {
+describe.only("MainPage", () => {
   it("should render search form link", async () => {
     render(
       <MemoryRouter>
@@ -12,10 +12,9 @@ describe("MainPage", () => {
       </MemoryRouter>
     );
 
-    const searchForm = screen.getByText("Search Form");
-    
+    const searchForm = screen.getByText("Sleuth for Games");
+
     expect(searchForm).toBeInTheDocument();
-    
   });
 
   it("should render search trending games link", async () => {
@@ -24,21 +23,21 @@ describe("MainPage", () => {
         <MainPage />
       </MemoryRouter>
     );
-    
-    const trendingGames = screen.getByText("Trending Games")
-    
+
+    const trendingGames = screen.getByText("Trending Games");
+
     expect(trendingGames).toBeInTheDocument();
   });
 
-  it("should render search top 10 games link", async () => {
+  it("should render search top 100 games link", async () => {
     render(
       <MemoryRouter>
         <MainPage />
       </MemoryRouter>
     );
-    
-    const topTenGames = screen.getByText("Top 10 Games")
-    
+
+    const topTenGames = screen.getByText("The Top 100");
+
     expect(topTenGames).toBeInTheDocument();
   });
 
@@ -48,9 +47,9 @@ describe("MainPage", () => {
         <MainPage />
       </MemoryRouter>
     );
-    
-    const fourPlayerGames = screen.getByText("4 Player Games")
-    
+
+    const fourPlayerGames = screen.getByText("4 Player Games");
+
     expect(fourPlayerGames).toBeInTheDocument();
   });
 
@@ -60,10 +59,9 @@ describe("MainPage", () => {
         <MainPage />
       </MemoryRouter>
     );
-    
-    const twoPlayerGames = screen.getByText("2 Player Games")
-    
+
+    const twoPlayerGames = screen.getByText("2 Player Games");
+
     expect(twoPlayerGames).toBeInTheDocument();
   });
-
-})
+});

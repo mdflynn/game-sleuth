@@ -1,5 +1,5 @@
 import './SoloGameView.scss';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import * as API from '../APIcalls';
 import { MyBoardGame } from '../interfaces/MyBoardGame.interface';
@@ -10,8 +10,6 @@ export const SoloGameView = () => {
   const [soloCategories, setSoloCategories] = useState<any>({});
   const [error, setError] = useState<object | null>(null);
   const location: { id: string } = useParams();
-
-  //TODO: Change soloMechanics and soloCatagories to use valid types
 
   useEffect(() => {
     if (soloGame) return;
@@ -52,11 +50,9 @@ export const SoloGameView = () => {
     });
 
     return function cleanup() {
-      if (soloMechanics && soloCategories && soloGame) {
-        mounted = false;
-      }
-    };
-  });
+      mounted = false;
+    }
+  }, [soloGame, location.id]);
 
   const matchMechanicFromId = (mechanic: { id: string }) => {
     return soloMechanics.mechanics.find(

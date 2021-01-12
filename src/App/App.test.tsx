@@ -1,13 +1,11 @@
-
 import React from "react";
-import { screen, render, waitFor } from "@testing-library/react";
 import App from "./App";
+import { screen, render, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
 import { Router, MemoryRouter } from "react-router-dom";
 import { createMemoryHistory } from "history";
-import { fetchSearchResults } from "../APIcalls";
-import { exception } from "console";
+import { fetchSearchResults, fetchSoloGameDetails } from "../APIcalls";
 jest.mock("../APIcalls");
 
 const expectedReturn = {
@@ -35,6 +33,35 @@ const expectedReturn = {
   ],
 };
 
+const soloGameDetails = {
+  games: [
+    {
+      id: 'j8LdPFmePE',
+      key: 'yqR4PtpO8X',
+      name: '7 Wonders Duel',
+      min_players: 1,
+      max_players: 5,
+      image_url:
+        'https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559254971843-513-lrmjs2L.jpg',
+      rank: 2,
+      min_age: 14,
+      description: '7 Wonders Duel is great',
+      price: 68,
+      url: 'https://www.boardgameatlas.com/game/yqR4PtpO8X/scythe',
+      primary_publisher: { name: 'Stonemaier Games' },
+      mechanics: { id: 'Bc7R8pLoGk' },
+      average_user_rating: 4,
+      num_user_ratings: 234,
+      trending_rank: 3,
+      rules_url: 'https://app.box.com/s/rj3jrw0rab2uiz02up89kbant5g8ew1p',
+    },
+  ],
+};
+
+const soloSubDetails = {
+  mechanics: [{ id: 'Bc7R8pLoGk', name: 'Worker Placement' }],
+};
+
 describe("App & MainPage Interactions", () => {
   it("should render correctly", async () => {
     render(
@@ -43,7 +70,7 @@ describe("App & MainPage Interactions", () => {
       </MemoryRouter>
     );
 
-    expect(screen.getByText("Search Form")).toBeInTheDocument;
+    expect(screen.getByText("Sleuth for Games")).toBeInTheDocument;
     expect(screen.getByText("Trending Games")).toBeInTheDocument;
   });
 
@@ -103,9 +130,11 @@ describe("App & MainPage Interactions", () => {
     expect(movieTitle).toBeInTheDocument();
   });
 
-  it.skip("should handle path to a certian game", async () => {
+  it("should handle path to a certian game", async () => {
     const mockedFetchCall = fetchSearchResults as jest.Mock<any>;
-    mockedFetchCall.mockResolvedValue(expectedReturn);
+    mockedFetchCall.mockResolvedValue(soloGameDetails);
+    const mockedDetailsCall = fetchSoloGameDetails as jest.Mock<any>;
+    mockedDetailsCall.mockResolvedValue(soloSubDetails);
     const history = createMemoryHistory();
     history.push("/game/j8LdPFmePE");
     render(
@@ -115,9 +144,7 @@ describe("App & MainPage Interactions", () => {
     );
 
     const soloMovieTitle = await waitFor(
-      () => screen.getByText("Individual View")
-      // change this when we design to "7 Wonders Deul" bc right now only "Individual Movie"
-      // is the only thing rendered on that path
+      () => screen.getByText("7 Wonders Duel")
     );
     expect(soloMovieTitle).toBeInTheDocument();
   });
@@ -135,7 +162,7 @@ describe("SearchForm interaction", () => {
       </MemoryRouter>
     );
 
-    const searchForm = screen.getByText("Search Form");
+    const searchForm = screen.getByText("Sleuth for Games");
 
     userEvent.click(searchForm);
 
@@ -179,7 +206,7 @@ describe("SearchDisplay & SoloDisplay interaction", () => {
       </MemoryRouter>
     );
 
-    const topTenGames = screen.getByText("Top 10 Games");
+    const topTenGames = screen.getByText("The Top 100");
 
     userEvent.click(topTenGames);
 
@@ -188,9 +215,11 @@ describe("SearchDisplay & SoloDisplay interaction", () => {
     expect(title).toBeInTheDocument();
   });
 
-  it.skip("should be able to click a link then a solo game", async () => {
+  it("should be able to click a link then a solo game", async () => {
     const mockedFetchCall = fetchSearchResults as jest.Mock<any>;
-    mockedFetchCall.mockResolvedValue(expectedReturn);
+    mockedFetchCall.mockResolvedValue(soloGameDetails);
+    const mockedDetailsCall = fetchSoloGameDetails as jest.Mock<any>;
+    mockedDetailsCall.mockResolvedValue(soloSubDetails);
     render(
       <MemoryRouter>
         <App />
@@ -207,31 +236,9 @@ describe("SearchDisplay & SoloDisplay interaction", () => {
 
     userEvent.click(title);
 
-    expect(screen.getByText("Individual View")).toBeInTheDocument();
-    // Change this from Indiv View to Game Title or Published by or something being rendered
-  });
+    const testId = await waitFor(() => screen.getByTestId('solo-view-test'))
 
-  it.skip("should be able to click a link then a different solo game", async () => {
-    const mockedFetchCall = fetchSearchResults as jest.Mock<any>;
-    mockedFetchCall.mockResolvedValue(expectedReturn);
-    render(
-      <MemoryRouter>
-        <App />
-      </MemoryRouter>
-    );
-
-    const trendingGames = screen.getByText("Trending Games");
-
-    userEvent.click(trendingGames);
-
-    const title = await waitFor(() => screen.getByText("Patchwork"));
-
-    expect(title).toBeInTheDocument();
-
-    userEvent.click(title);
-
-    expect(screen.getByText("Individual View")).toBeInTheDocument();
-    // Change this from Indiv View to Game Title or Published by or something being rendered
+    expect(testId).toBeInTheDocument();
   });
 });
 
@@ -267,22 +274,19 @@ describe("Incorrect Path interaction", () => {
   });
 
   it("should be able to return home on click", async () => {
+    const history = createMemoryHistory();
+    history.push("/some/bad/route");
     render(
-      <MemoryRouter>
+      <Router history={history}>
         <App />
-      </MemoryRouter>
+      </Router>
     )
-      const searchForm = screen.getByRole('link', { name: /search form/i });
-      userEvent.click(searchForm)
+    const homeButton = await waitFor(() => screen.getByText("Return Home"));
 
-      const searchGame = screen.getByRole('heading', { name: /search for a game!/i });
-      expect(searchGame).toBeInTheDocument();
+    userEvent.click(homeButton);
 
-      const homeButton =screen.getByRole('link', { name: /game slueth/i });
-      userEvent.click(homeButton)
-
-      const homePage = screen.getByRole('link', { name: /search form/i });
-      expect(homePage).toBeInTheDocument();
+    expect(homeButton).not.toBeInTheDocument();
+    expect(screen.getByText("Sleuth for Games")).toBeInTheDocument()
   })
 });
 
