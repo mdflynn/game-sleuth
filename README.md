@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Game Sleuth - Front End Mod 3 Stretch Project
+---
+## Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A board game searching app that allows you to find any board game based on your criteria.
 
-## Available Scripts
+## Goals
+* Create a React app that has user interaction with use of a REST Api
+* Research and incorporate brand new technology into the app
+* Create and design a MVP without any guidance or set mockups
 
-In the project directory, you can run:
+## Technologies and Tools
+> * React with Hooks 
+> * TypesScript
+> * JavaScript
+> * JSX
+> * Material-UI
+> * HTML
+> * SASS
+> * Heroku
+> * git
+> * GitHub
+> * Terminal
 
-### `npm start`
+## Wins
+* Successfully created a TypeScript design React App
+* Using React Hooks to remove all class components from our app
+* Effective communication and using a git workflow to prevent any merge issues
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Challenges
+* Incorporating Typescript for the first time
+* Integration testing Material-UI Slider components
+* Realizing which components need to be rendered in order to properly test components
 
-### `npm test`
+## Site Design
+### Search for a game by name
+<img width="1400" alt="search by name" src="https://media.giphy.com/media/kIHdX0CeBNPlFk0Tv7/giphy.gif">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Search for a game by a range
+<img width="1400" alt="search by range" src="https://media.giphy.com/media/Kv0y5Jd1Ya4mDFaDwN/giphy.gif">
 
-### `npm run build`
+### All two player games
+<img width="1400" alt="two player games" src="https://media.giphy.com/media/ZxbiwCENkIRnEbj4AV/giphy.gif">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Single Game view
+<img width="1400" alt="single game view" src="https://media.giphy.com/media/3qGnl9WrWqqZDHNEze/giphy.gif">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
+<details>
+  <summary>Set up</summary>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Clone the repository down and cd into the repo on your local machine.
+* Install the library dependencies by running:
+  * `npm install`
+* To verify that it is setup correctly, run `npm start` in your terminal.
+* Go to `http://localhost:3000/` and the site should display and have functionality.
+* Enter `control + c` in your terminal to stop the server at any time.
+</details>
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Contributors:
+- [Bryce Jarrett](https://github.com/brycemara)
+<img src="https://avatars1.githubusercontent.com/u/68242949?s=460&u=a0d4e202405a8c37aff039f34c42bb1f2d152371&v=4" alt="Bryce Jarrett"
+ width="150" height="auto" />
+- [Mike Flynn](https://github.com/mdflynn)
+<img src="https://avatars1.githubusercontent.com/u/64620860?s=460&u=22fbddd0d55029892d0c73c4b37808a36d5aa1bd&v=4" alt="Mike Flynn"
+ width="150" height="auto" />
+ - [Shawn Truesdale](https://github.com/Shawntru)
+<img src="https://avatars2.githubusercontent.com/u/68252181?s=460&u=0e706c67d754b36a877dbbc3d7750b32e1e06454&v=4" alt="Shawn Truesdale"
+ width="150" height="auto" />
