@@ -27,18 +27,16 @@ const expectedReturn = {
       image_url:
         "https://s3-us-west-1.amazonaws.com/5cc.images/games/uploaded/1559255812092-51S3zQnsPBL.jpg",
       price: "30.97",
-    }
+    },
   ],
 };
 
 beforeEach(() => {
   const mockedFetchCall = fetchSearchResults as jest.Mock<any>;
   mockedFetchCall.mockResolvedValue(expectedReturn);
-
-})
+});
 
 describe("SearchDisplay", () => {
-
   it("should render correctly", async () => {
     render(
       <MemoryRouter>
