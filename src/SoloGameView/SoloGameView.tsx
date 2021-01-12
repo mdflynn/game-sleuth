@@ -141,9 +141,11 @@ export const SoloGameView = () => {
               <a className="info-link" href={soloGame.url}>
                 See more at Board Game Atlas
               </a>
-              <a className="info-link" href={soloGame.rules_url}>
-                Show Me The Rules
-              </a>
+              {soloGame.rules_url && (
+                <a className="info-link" href={soloGame.rules_url}>
+                  Show Me The Rules
+                </a>
+              )}
             </div>
           </div>
         </div>
