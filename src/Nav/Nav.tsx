@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 
 const Nav: React.FC = () => {
   return (
-    <nav>
+    <nav className="nav-styling">
       <Link className="sleuth-link" to={'/'}>
         <div className="sleuth-div">
-          <h2>Game Slueth</h2>
-          <img className="sleuth-img" src={sleuth} />
+          <h2>Game</h2>
+          <img className="sleuth-img" src={sleuth} alt="sleuth logo" />
+          <h2>Sleuth</h2>
         </div>
       </Link>
     </nav>

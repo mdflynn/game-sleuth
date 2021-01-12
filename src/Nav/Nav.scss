@@ -1,7 +1,10 @@
-nav {
+@import '../variables.scss';
+
+.nav-styling {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  position: sticky;
 }
 
 .sleuth-img {
@@ -9,11 +12,12 @@ nav {
   width: 4em;
   margin: 1em;
   cursor: pointer;
+  filter: invert;
 }
 
 .sleuth:hover,
 .sleuth-link:hover {
-  transform: translateY(1px);
+  filter: invert(1);
 }
 
 .sleuth:active,
@@ -22,11 +26,14 @@ nav {
 }
 
 .sleuth-div {
+  width: 100%;
   display: flex;
   align-items: center;
 }
 
 .sleuth-link {
+  border-bottom: $l-orange 2px solid;
+  transition: 0.5s ease all;
   text-decoration: none;
 }
 
