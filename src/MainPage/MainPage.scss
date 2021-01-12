@@ -18,10 +18,12 @@
 
 .title {
   color: white;
-  top: 50px;
-  left: -20px;
+  top: 60px;
+  left: -10px;
   position: relative;
   transform: rotate(-45deg);
+  text-shadow: $blue 0px 0px 5px;
+  font-size: 1.25em;
 }
 
 .list-wrapper {
@@ -38,6 +40,7 @@
 .list-wrapper li.search-four-player {
   background-size: 300px;
   background-image: url('../assets/darts-image.jpg');
+
   bottom: 0;
   left: 25%;
 }
