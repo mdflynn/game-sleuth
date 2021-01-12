@@ -1,15 +1,15 @@
-# Game Sleuth
+# Game Sleuth - Front End Mod 3 Stretch Project
 ---
 ## Overview
 
-Board game searching app that incorporates Typescript and React Hooks for the first time.
+A board game searching app that allows you to find any board game based on your criteria.
 
 ## Goals
 * Create a React app that has user interaction with use of a REST Api
 * Research and incorporate brand new technology into the app
 * Create and design a MVP without any guidance or set mockups
 
-## Technologies And tools
+## Technologies and Tools
 > * React with Hooks 
 > * TypesScript
 > * JavaScript
@@ -35,18 +35,18 @@ Board game searching app that incorporates Typescript and React Hooks for the fi
 
 ## Site Design
 ### Search for a game by name
-<img width="1436" alt="search by name" src="https://media.giphy.com/media/kIHdX0CeBNPlFk0Tv7/giphy.gif">
+<img width="1400" alt="search by name" src="https://media.giphy.com/media/kIHdX0CeBNPlFk0Tv7/giphy.gif">
 
 ### Search for a game by a range
-<img width="1436" alt="search by range" src="https://media.giphy.com/media/Kv0y5Jd1Ya4mDFaDwN/giphy.gif">
+<img width="1400" alt="search by range" src="https://media.giphy.com/media/Kv0y5Jd1Ya4mDFaDwN/giphy.gif">
 
 ### All two player games
-<img width="1436" alt="two player games" src="https://media.giphy.com/media/ZxbiwCENkIRnEbj4AV/giphy.gif">
+<img width="1400" alt="two player games" src="https://media.giphy.com/media/ZxbiwCENkIRnEbj4AV/giphy.gif">
 
 ### Single Game view
-<img width="1436" alt="single game view" src="https://media.giphy.com/media/3qGnl9WrWqqZDHNEze/giphy.gif">
+<img width="1400" alt="single game view" src="https://media.giphy.com/media/3qGnl9WrWqqZDHNEze/giphy.gif">
 
-
+---
 <details>
   <summary>Set up</summary>
 
@@ -59,13 +59,12 @@ Board game searching app that incorporates Typescript and React Hooks for the fi
 </details>
 
 #### Contributors:
-- [Shawn Truesdale](https://github.com/Shawntru)
-<img src="https://avatars2.githubusercontent.com/u/68252181?s=460&u=0e706c67d754b36a877dbbc3d7750b32e1e06454&v=4" alt="Shawn Truesdale"
- width="150" height="auto" />
 - [Bryce Jarrett](https://github.com/brycemara)
 <img src="https://avatars1.githubusercontent.com/u/68242949?s=460&u=a0d4e202405a8c37aff039f34c42bb1f2d152371&v=4" alt="Bryce Jarrett"
  width="150" height="auto" />
 - [Mike Flynn](https://github.com/mdflynn)
 <img src="https://avatars1.githubusercontent.com/u/64620860?s=460&u=22fbddd0d55029892d0c73c4b37808a36d5aa1bd&v=4" alt="Mike Flynn"
  width="150" height="auto" />
-
+ - [Shawn Truesdale](https://github.com/Shawntru)
+<img src="https://avatars2.githubusercontent.com/u/68252181?s=460&u=0e706c67d754b36a877dbbc3d7750b32e1e06454&v=4" alt="Shawn Truesdale"
+ width="150" height="auto" />
