@@ -59,12 +59,15 @@ A board game searching app that allows you to find any board game based on your 
 </details>
 
 #### Contributors:
+
 - [Bryce Jarrett](https://github.com/brycemara)
 <img src="https://avatars1.githubusercontent.com/u/68242949?s=460&u=a0d4e202405a8c37aff039f34c42bb1f2d152371&v=4" alt="Bryce Jarrett"
  width="150" height="auto" />
+
 - [Mike Flynn](https://github.com/mdflynn)
 <img src="https://avatars1.githubusercontent.com/u/64620860?s=460&u=22fbddd0d55029892d0c73c4b37808a36d5aa1bd&v=4" alt="Mike Flynn"
  width="150" height="auto" />
+ 
  - [Shawn Truesdale](https://github.com/Shawntru)
 <img src="https://avatars2.githubusercontent.com/u/68252181?s=460&u=0e706c67d754b36a877dbbc3d7750b32e1e06454&v=4" alt="Shawn Truesdale"
  width="150" height="auto" />
