@@ -20,7 +20,7 @@ const GamePreview = ({
           <p>
             {min_players}-{max_players} Players
           </p>
-          <p>Sleuth Ranking: {rank}</p>
+          {rank <= 10000 && <p>Sleuth Ranking: {rank}</p>}
         </div>
       </section>
     </Link>

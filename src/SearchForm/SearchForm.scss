@@ -1,3 +1,17 @@
+@import '../variables.scss';
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.slider {
+  transform: scale(1.1);
+}
+
+.search-criteria-font {
+  color: white;
+}
+
 .search-box {
   position: absolute;
   top: 50%;
@@ -9,6 +23,7 @@
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
+  margin-top: 2em;
 }
 
 .search-box h2 {
@@ -52,9 +67,6 @@
   color: #03e9f4;
   font-size: 12px;
 }
-input:focus::-webkit-input-placeholder {
-  color: transparent;
-}
 
 .search-box form a {
   position: relative;
@@ -92,10 +104,6 @@ input:focus::-webkit-input-placeholder {
   animation: btn-anim1 1s linear infinite;
 }
 
-// h3 {
-//   color: #a3b4cb;
-// }
-
 .search-box a span:nth-child(2) {
   top: -100%;
   right: 0;
@@ -126,6 +134,17 @@ input:focus::-webkit-input-placeholder {
   animation-delay: 0.75s;
 }
 
+.mag-hand-search-form {
+  position: fixed;
+  left: -8em;
+  bottom: -3em;
+  height: 25em;
+  z-index: -1;
+  overflow: hidden;
+  transform-origin: 2em 20em;
+  animation: 3.5s ease search;
+}
+
 .values-display {
   display: flex;
   justify-content: space-between;
@@ -133,6 +152,18 @@ input:focus::-webkit-input-placeholder {
 
 .value {
   color: #03e9f4;
+}
+
+@keyframes search {
+  25% {
+    transform: rotate(10deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(-10deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(-15) scale(1);
+  }
 }
 
 @keyframes btn-anim4 {

@@ -1,14 +1,15 @@
-import React from "react";
-import "./MainPage.scss";
-import { Link } from "react-router-dom";
+import React from 'react';
+import './MainPage.scss';
+import { Link } from 'react-router-dom';
+import magHand from '../assets/mag-hand.png';
 
 const MainPage: React.FC = () => {
   return (
     <main className="container">
-      <ul>
+      <ul className="list-wrapper">
         <Link className="remove-link" to="/form">
           <li className="search-form">
-            <h3 className="title">Search Form</h3>
+            <h3 className="title">Sleuth for Games</h3>
           </li>
         </Link>
 
@@ -20,7 +21,7 @@ const MainPage: React.FC = () => {
 
         <Link className="remove-link" to="/top">
           <li className="search-top" data-value="top-10">
-            <h3 className="title">Top 10 Games</h3>
+            <h3 className="title">The Top 100</h3>
           </li>
         </Link>
 
@@ -36,9 +37,9 @@ const MainPage: React.FC = () => {
           </li>
         </Link>
       </ul>
+      <img className="mag-hand-home" alt="Magnifier Hand" src={magHand} />
     </main>
   );
 };
-
 
 export default MainPage;

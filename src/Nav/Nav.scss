@@ -1,40 +1,43 @@
-nav {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+@import '../variables.scss';
+
+.nav-styling {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
 }
 
-.sleuth {
-    height: 100px;
-    width: 100px;
-    padding: 15px 25px;
-    font-size: 24px;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: #fff;
-    border: none;
-    border-radius: 15px;
-  }
-  
-  .sleuth:hover, .sleuth-link:hover {
-    transform: translateY(1px)
-  }
-  
-  .sleuth:active, .sleuth-link:active {
-    transform: translateY(4px);
-  }
+.sleuth-img {
+  height: 4em;
+  width: 4em;
+  margin: 1em;
+  cursor: pointer;
+  filter: invert;
+}
 
-  .sleuth-div {
-      display: flex;
-      align-items: center;
-  }
-  
-  .sleuth-link {
-      text-decoration: none;
-  }
+.sleuth:hover,
+.sleuth-link:hover {
+  filter: invert(1);
+}
 
-  .sleuth-link:visited {
-      text-decoration: none;
-      color: white;
-  }
+.sleuth:active,
+.sleuth-link:active {
+  transform: translateY(4px);
+}
+
+.sleuth-div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.sleuth-link {
+  border-bottom: $l-orange 2px solid;
+  transition: 0.5s ease all;
+  text-decoration: none;
+}
+
+.sleuth-link:visited {
+  text-decoration: none;
+  color: white;
+}

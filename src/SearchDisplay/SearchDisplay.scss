@@ -1,8 +1,35 @@
+.status-font {
+  color: white;
+}
+
+.mag-hand-search {
+  opacity: 0.5;
+  position: relative;
+  height: 25em;
+  z-index: -1;
+  overflow: hidden;
+  transform-origin: left bottom;
+  animation: 2s ease loading infinite;
+}
+
 .search-results {
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
-  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
   align-content: center;
+}
+
+.matches-num {
+  font-size: 0.5em;
+  font-style: italic;
+}
+
+@keyframes loading {
+  33% {
+    transform: rotate(8deg);
+  }
+  66% {
+    transform: translateX(15px) translateX(15px) rotate(4deg);
+  }
 }
