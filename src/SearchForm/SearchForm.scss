@@ -142,6 +142,7 @@ input:focus::-webkit-input-placeholder {
   z-index: -1;
   overflow: hidden;
   transform-origin: 2em 20em;
+  opacity: 0.75;
   animation: 3.5s ease search;
 }
 

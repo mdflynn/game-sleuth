@@ -2,13 +2,17 @@
   color: white;
 }
 
-.mag-hand-search {
+.mag-hand-static {
   opacity: 0.5;
   position: relative;
   height: 25em;
   z-index: -1;
   overflow: hidden;
   transform-origin: left bottom;
+}
+
+.mag-hand-search {
+  @extend .mag-hand-static;
   animation: 2s ease loading infinite;
 }
 
